@@ -46,4 +46,4 @@ Use Shuman's module for NES controller - Each implement an output that can be co
 
 Meeting Saturday November 23 in the Afternoon.
 - This meeting we need to solidify plan for the couple weeks after (We wil not meet the week of thanksgiving)
-
+-Ben will work on implementing 4. Audio Output (Square Wave)
