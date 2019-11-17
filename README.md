@@ -44,7 +44,10 @@ For example:  Lets say your team design project where a PS/2 Keyboard controls a
 
 Use Shuman's module for NES controller - Each implement an output that can be controlled by the NES controller 
 
+* Ben will work on implementing 4. Audio Output (Square Wave)
+* Grant will work on implementing 3. VGA Output
+* Ben W. will work on implementing 2. Seven Segment Display 
+
+
 Meeting Saturday November 23 in the Afternoon.
 - This meeting we need to solidify plan for the couple weeks after (We wil not meet the week of thanksgiving)
--Ben will work on implementing 4. Audio Output (Square Wave)
-- Grant will work on implementing 3. VGA Output
