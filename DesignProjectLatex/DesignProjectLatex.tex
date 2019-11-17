@@ -1,0 +1,73 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[section]{placeins}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+%\usepackage{pdfpages}%to insert pdfs
+ 
+\usepackage{float}		%Ben trying to format figures
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\makeatletter
+
+%% All below Added by Ben |||||||||||||||||||||||||||||||||||||||||||||||
+\g@addto@macro\@floatboxreset\centering
+\makeatother				% this and above automatically center figures
+
+% Alphabetized list macro from:  https://tex.stackexchange.com/questions/121489/alphabetically-display-the-items-in-itemize
+\usepackage{datatool}% http://ctan.org/pkg/datatool
+\newcommand{\sortitem}[1]{%
+  \DTLnewrow{list}% Create a new entry
+  \DTLnewdbentry{list}{description}{#1}% Add entry as description
+}
+\newenvironment{sortedlist}{%
+  \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}% Create new/discard old list
+}{%
+  \DTLsort{description}{list}% Sort list
+  \begin{itemize}%
+    \DTLforeach*{list}{\theDesc=description}{%
+      \item \theDesc}% Print each item
+  \end{itemize}%
+}
+%use these instead to alphabetize list:
+%\begin{sortedlist}
+%   \sortitem{ISDYNSTP
+%
+%||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+\title{ECE271, Final Project}
+\author{Ben Adams, Grant Haines, Benjiman Walsh}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\pagebreak
+
+\section{Introduction}
+
+\section{High Level Descriptions}%%%%%%%%%%%%%%
+
+
+\section{HDL Components}
+
+\section{Appendix}
+
+
+%\includepdf[page=-]{Ch3Example}
+
+\end{document}
