@@ -3,3 +3,9 @@
 \BOOKMARK [1][-]{section.3}{Controller Descriptions}{}% 3
 \BOOKMARK [1][-]{section.4}{HDL Components}{}% 4
 \BOOKMARK [1][-]{section.5}{Appendix}{}% 5
+\BOOKMARK [2][-]{subsection.5.1}{Source Code}{section.5}% 6
+\BOOKMARK [3][-]{subsubsection.5.1.1}{NES Controller Reader}{subsection.5.1}% 7
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Square Wave Generator}{subsection.5.1}% 8
+\BOOKMARK [2][-]{subsection.5.2}{Simulation Results}{section.5}% 9
+\BOOKMARK [3][-]{subsubsection.5.2.1}{NES Controller Reader}{subsection.5.2}% 10
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Square Wave Generator}{subsection.5.2}% 11
