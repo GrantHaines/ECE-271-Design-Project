@@ -64,17 +64,36 @@
 
 \section{Introduction}
 
-The purpose of this project is to create a digital logic design that uses an NES controller to control various kinds of output through an FPGA.
+The purpose of this project is to create a digital logic design that uses various input modules with various output modules.
 
 
 
 \section{High Level Descriptions}%%%%%%%%%%%%%%
 
 
-
 \section{Controller Descriptions}
 
+This section is meant to provide a brief but thorough low-level view of the operations of our chosen input devices. 
 
+\subsection{NES Controller}
+
+The Nintendo Entertainment System (NES) first became available in America in 1985 and revolutionized society as the first accessible home video game system. NES controllers work by receiving "clock" and "latch" signals from the NES console and transmitting a data signal to the console. NES controllers use a shift register to store all of the controller's button data when the console sends the latch signal (As in figure \ref{nesSchematic}). Each successive clock signal shifts the controller register down and the controller's data wire outputs a value that represents the next button's signal (See figure \ref{nesClock}). 
+
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/nesSchema.png}
+    \caption{"Button Mashing" on the NES}
+    \label{nesSchematic}
+\end{figure}
+
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/nesclock.jpg}
+    \caption{"Button Mashing" on the NES}
+    \label{nesClock}
+\end{figure}
+
+The NES controller decoder SystemVerilog module was provided for us in the course materials.
 
 \section{HDL Components}
 
@@ -85,6 +104,8 @@ The purpose of this project is to create a digital logic design that uses an NES
 \subsection{Source Code}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{NES Controller Reader}
+
+
 
 \subsubsection{Square Wave Generator}
 
