@@ -5,38 +5,38 @@
 */
 
 module top-level
-		(input clock50MHz);
+		(input clock50MHz,
+		 input NESDataYellow,
+		 output vgaHsync, vgaVsync,
+		 output vgaOutRed, vgaOutGreen, vgaOutBlue);
 
 	NesReader NesReader1 (
-		.dataYellow(),
+		.dataYellow(NESDataYellow),
 		.clock(),
 		.reset_n(),
 		.latchOrange(),
 		.clockRed(),
-		.up(),
-		.down(),
-		.left(),
-		.right(),
-		.start(),
-		.select(),
-		.a(),
-		.b()
+		.up(NESUp),
+		.down(NESDown),
+		.left(NESLeft),
+		.right(NESRight),
+		.start(NESStart),
+		.select(NESSelect),
+		.a(NESA),
+		.b(NESB)
 	);
-		
+
 	vgaOutput vgaOutput1 (
 		.clock50MHz(clock50MHz),
-		.inReset(),
-		.redSwitch1(),
-		.redSwitch2(),
-		.greenSwitch1(),
-		.greenSwitch2(),
-		.blueSwitch1(),
-		.blueSwitch2(),
-		.hsync(),
-		.vsync(),
-		.outRed(),
-		.outGreen(),
-		.outBlue()
+		.inReset(NESStart),
+		.inRed(NESUp),
+		.inGreen(NESLeft),
+		.inBlue(NESRight),
+		.hSync(vgaVsync),
+		.vSync(vgaHsync),
+		.outRed(vgaOutRed),
+		.outGreen(vgaOutGreen),
+		.outBlue(vgaOutBlue)
 	);
 
 endmodule
