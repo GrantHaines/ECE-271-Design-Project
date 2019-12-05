@@ -7,24 +7,31 @@
 module vgaOutput
 		(input clock50MHz,
 		 input inReset,
-		 input redSwitch1, redSwitch2,
-		 input greenSwitch1, greenSwitch2,
-		 input blueSwitch1, blueSwitch2,
+		 input inRed,
+		 input inGreen,
+		 input inBlue,
 		 output hSync,
 		 output vSync,
 		 output [3:0] outRed, outGreen, outBlue);
 	
-	logic [3:0] inRed, inGreen, inBlue;
+	counter #(.N(4)) redCounter (
+		.clk(inRed),
+		.reset(inReset),
+		.q(redCount)
+	);
 	
-	assign inRed[3:2] = {2{redSwitch1}};
-	assign inRed[1:0] = {2{redSwitch2}};
+	counter #(.N(4)) greenCounter (
+		.clk(inGreen),
+		.reset(inReset),
+		.q(greenCount)
+	);
 	
-	assign inGreen[3:2] = {2{greenSwitch1}};
-	assign inGreen[1:0] = {2{greenSwitch2}};
-	
-	assign inBlue[3:2] = {2{blueSwitch1}};
-	assign inBlue[1:0] = {2{blueSwitch2}};
-		 
+	counter #(.N(4)) blueCounter (
+		.clk(inBlue),
+		.reset(inReset),
+		.q(blueCount)
+	);
+
 	clockmod clockDivider(
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
@@ -55,9 +62,9 @@ module vgaOutput
 	
 	displayMux display (
 		.select(hSignal & vSignal),
-		.inRed(inRed),
-		.inGreen(inGreen),
-		.inBlue(inBlue),
+		.inRed(redCount),
+		.inGreen(greenCount),
+		.inBlue(blueCount),
 		.outRed(outRed),
 		.outGreen(outGreen),
 		.outBlue(outBlue)
