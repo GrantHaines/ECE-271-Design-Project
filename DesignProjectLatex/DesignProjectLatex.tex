@@ -127,7 +127,15 @@ INSERT TOP MODULE DESCRIPTION HERE
 
 \subsection{VGA Output}
 
+<<<<<<< HEAD
 INSERT VGA OUTPUT DIAGRAM HERE
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaOutput.JPG}
+    \caption{VGA output module diagram}
+    \label{vgaOutputDiagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Input: The VGA module takes a 50MHz clock signal, a reset signal, and three button signals for the red, green, and blue inputs.
 
@@ -137,12 +145,20 @@ Description: This module is designed to output a 640x480 resolution VGA signal, 
 
 \subsubsection{VGA hCounterComp}
 
+<<<<<<< HEAD
 INSERT DIAGRAM HERE
 
 Inputs: A 25MHz clock signal, a 50MHz clock signal, and a reset signal.
 Outputs: The horizontal sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
 
 Description: The hCounterComp creates the hSync signal for the VGA driver, as well as indicating that the signal is within the display area so that the RGB values can be communicated to the screen. The hSync signal travels through the horizontal row of pixels on the screen, displaying color when appropriate.
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vga_syncCounterComp.JPG}
+    \caption{VGA syncCounterComp module diagram}
+    \label{vgaSyncCounterCompDiagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 \subsubsection{VGA vCounterComp}
 
@@ -155,7 +171,15 @@ Description: The vCounterComp module generates the vSync signal for the VGA driv
 
 \subsubsection{VGA counter}
 
+<<<<<<< HEAD
 INSERT DIAGRAM HERE
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vga_counter.JPG}
+    \caption{VGA counter module diagram}
+    \label{vgaCounterDiagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A clock signal and a reset signal.
 Outputs: An N-bit binary value.
@@ -164,7 +188,15 @@ Description: This counter adds one to its output value each rising clock edge.
 
 \subsubsection{VGA displayMux}
 
+<<<<<<< HEAD
 INSERT DIAGRAM HERE
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vga_displayMux.JPG}
+    \caption{VGA displayMux module diagram}
+    \label{vgaDisplayMuxDiagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A select signal and red, green, and blue binary input values.
 Outputs: Either the inputted RGB values or 0 values.
@@ -173,7 +205,15 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 
 \subsubsection{VGA comparator}
 
+<<<<<<< HEAD
 INSERT DIAGRAM HERE
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vga_comparator.JPG}
+    \caption{VGA comparator module diagram}
+    \label{vgaComparatorDiagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A select signal and red, green, and blue binary input values.
 Outputs: Either the inputted RGB values or 0 values.
@@ -182,7 +222,15 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 
 \subsubsection{VGA synchronizer}
 
+<<<<<<< HEAD
 INSERT DIAGRAM HERE
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vga_synchronizer.JPG}
+    \caption{VGA synchronizer module diagram}
+    \label{vgaSynchronizerDiagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A clock signal and a 1-bit data value.
 Outputs: A 1-bit data value.
@@ -191,7 +239,15 @@ Description: The synchronizer takes asynchronous inputs and syncs them to the cl
 
 \subsubsection{clockDivBy2}
 
+<<<<<<< HEAD
 INSERT DIAGRAM HERE
+=======
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clockDivBy2.JPG}
+    \caption{The clockDivBy2 module diagram}
+    \label{clockDivBy2Diagram}
+\end{figure}
+>>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A clock signal and a reset signal.
 Outputs: A clock signal half as fast as the input clock signal.
@@ -207,6 +263,145 @@ Our square wave generator uses a simple algorithm to take a 10-bit array of data
 \end{equation}
 
 The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
+
+\subsection{Seven Segment Display}
+Inputs: The seven segment display module (clock\_driver.sv) has an input for a 50 MHz clock signal, a reset, an enable, and start, left, right, up, down input signals from the NES controller.
+Outputs: The clock_driver module has 6 7-bit outputs to connect to the seven segment display on the De10-Lite.
+
+Description: This module is designed to have a working (and settable) 12 hour clock. If the user presses start they will be able to set the clock to any value. While setting the clock the user can navigate between seconds, minutes and hours. When a user is editing one of these states, the two corresponding seven segment displays will flash. When the user presses start again the time specified will start counting, as a clock should. The value that represents the hours on the clock will be a value between 0 and 11, but the displayed value for hours will be incremented by 1 in order to have the hours fall between 1 and 12.
+
+\subsubsection{Seven Segment Display: clock}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_driver.JPG}
+    \caption{Block diagram for the clock_driver module}
+    \label{clock_driver}
+\end{figure}
+
+Inputs: This module has an enable input and a reset input which will be driven by the select button on the NES controller. It has a clk input which will be assigned to the 50 MHz clock. It also has a set input, which will set the clock the the last three inputs, which are the initial values of seconds, minutes and hours.
+Outputs: This module has three outputs, seconds, minutes and hours, which represent the value to be displayed on the clock.
+
+Description: This module is a working and settable clock. If enable and set are HIGH and reset is LOW, the clock is running normally, counting up by seconds.
+
+\subsubsection{Seven Segment Display: parser}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/parser.JPG}
+    \caption{Block diagram for the parser module}
+    \label{parser}
+\end{figure}
+
+Inputs: This module has one input, the value to be parsed.
+Outputs: This module has two outputs, the ones digit of value and the tens digit of value.
+
+Description: The parser module takes a 6 bit input and separates it out into its two decimal, ones and tens, digits.
+
+\subsubsection{Seven Segment Display: seven_seg_driver}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/seven_seg_driver.JPG}
+    \caption{Block diagram for the seven_seg_driver module}
+    \label{seven_swg_driver}
+\end{figure}
+
+Inputs: This module has one input, d which is a 4 bit bus.
+Outputs: This module has one output, s, a 7 bit bus.
+
+Description: This module decodes a 4 bit binary value into a 7 bit bus that will drive an active low seven segment display.
+
+\subsubsection{Seven Segment Display: clk_divider}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clk_divider.JPG}
+    \caption{Block diagram for the clk_divider module}
+    \label{clk_driver}
+\end{figure}
+
+Inputs: This module has four inputs, cap , reset, en and clk_in.
+Outputs: This module has one output, clk_out.
+
+Description: This module takes a clock signal as an input and when that clock signal has cycled the number of times specified by cap, it will toggle the clk_out signal, or it divides the clock signal.
+
+\subsubsection{Seven Segment Display: clk_counter}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clk_counter.JPG}
+    \caption{Block diagram for the clk_counter module}
+    \label{clk_counter}
+\end{figure}
+
+
+Inputs: This module has six inputs, init, set, reset, clk_in, cap and clk_50MHz.
+Outputs: This module has two outputs, value and clk_out.
+
+Description: The clk_counter module, is a counter that increments on every rising edge of the clk_in. It then uses a comparator and synchronizer to see if that value exceeds the cap input, and if it does it resets to 0.
+
+\subsubsection{Seven Segment Display: counter}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/counter.JPG}
+    \caption{Block diagram for the counter module}
+    \label{counter}
+\end{figure}
+
+Inputs: The counter module takes 4 inputs, init, reset and clk_in.
+Outputs: This module has one output, value.
+
+Description: This module is a counter used for the seconds, minutes and hours of the clocks. If reset and en are LOW the count is set to equal the init input.
+
+\subsubsection{Seven Segment Display: comp}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/comp.JPG}
+    \caption{Block diagram for the comp module}
+    \label{comp}
+\end{figure}
+
+Inputs: The module comp, takes two inputs, a and b.
+Outputs: It has one output, gt.
+
+Description: Drives gt HIGH if a is greater than b.
+
+\subsubsection{Seven Segment Display: sync}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/sync.JPG}
+    \caption{Block diagram for the sync module}
+    \label{sync}
+\end{figure}
+
+Inputs: Two inputs, d and clk.
+Outputs: One output, q.
+
+Description: Turns an asynchronous value into a synchronous value.
+
+\subsubsection{Seven Segment Display: clock_set}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_set.JPG}
+    \caption{Block diagram for the clock_set module}
+    \label{clock_set}
+\end{figure}
+
+Inputs: clock_set has 9 inputs, start, clk_50MHz, left, right, up, down, s_curr, m_curr and h_curr.
+Outputs: It has 4 outputs, clk_2Hz, sinit, minit and hinit.
+
+Description: Clock set lets a user set the clock using a NES controller. When start is pulsed the clock goes into edit mode, the user can navigate through seconds, minutes and hours using the left or a button and the right or b button. The user can then add or subtract to the values, and when they find a desirable time to set the clock, they can push the start button again and it will send the outputs to the clock module.
+
+\subsubsection{Seven Segment Display: clk_column_sel}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clk_column_sel.JPG}
+    \caption{Block diagram for the clk_column_sel module}
+    \label{clk_column_sel}
+\end{figure}
+
+Inputs:clk_column_sel has three inputs, left, right and reset. 
+Outputs: This module has one output, which is the state of the system. 
+
+Description:This module is a state machine that lets the use navigate through the seven segment displays and determines which column the user is editing by encoding seconds, minutes and hours into states. 
+
+\subsubsection{Seven Segment Display: updowncounter}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/updowncounter.JPG}
+    \caption{Block diagram for the updowncounter module}
+    \label{updowncounter}
+\end{figure}
+
+Inputs: The updowncounter has seven inputs, cap, init, up, down, reset, en and a clock signal
+Outputs: This module has one output, which is the current count stored in the register.
+
+Description: This output is a counter that permits the user to count down or up. It is used to edit the clock values and will overflow both ways.
 
 \section{Hardware}%%%%%%%%%%%%%%%
 
@@ -270,6 +465,8 @@ module NesReader(
     .readButtons      ({a, b, select, start, up, down, left, right})
   );
 endmodule
+
+\end{Verbatim}
 
 \begin{Verbatim}
 module NesReader(
@@ -764,6 +961,502 @@ module clockDivBy2
 endmodule
 \end{Verbatim}
 
+\subsubsection{Seven Segment Display: clock_driver}
+\begin{Verbatim}
+module clock_driver(input logic clk_50MHz,
+                    input logic start, up, down, left, right,
+                    input logic reset,
+						  input logic en,
+						  output logic [6:0] Seg0, Seg1, Seg2, Seg3, Seg4, Seg5);
+						
+	logic edit_en, s_en, m_en, h_en;
+	
+	logic clk_2Hz;
+	
+	logic [6:0] s_seg_ones, s_seg_tens, m_seg_ones, m_seg_tens, h_seg_ones, h_seg_tens;
+	logic [5:0] clk_hours, clk_minutes, clk_seconds, hinit, minit, sinit;
+	logic [3:0] sec_ones, sec_tens, min_ones, min_tens, h_ones, h_tens;
+	
+	clock clk (
+	   
+		.hinit              (hinit),
+		.minit              (minit),
+		.sinit              (sinit),
+		.en                    (en),
+		.set              (start),
+		.reset              (reset),
+		.clk_50MHz      (clk_50MHz),
+		.hours          (clk_hours),
+		.minutes      (clk_minutes),
+		.seconds      (clk_seconds)
+	
+	);
+	
+	clock_set clk_set (
+	   
+		.start                    (start),	
+		.up                          (up),        
+		.down                      (down),
+		.left                      (left), 
+		.right                    (right),
+      .h_curr               (clk_hours), 
+		.m_curr             (clk_minutes), 
+		.s_curr             (clk_seconds),       
+      .clk_50MHz            (clk_50MHz),
+		.edit_en                (edit_en), 
+		.h_en                      (h_en), 
+		.m_en                      (m_en), 
+		.s_en                      (s_en),
+		.hours                    (hinit), 
+		.minutes                  (minit), 
+		.seconds                  (sinit),
+		.clk_2Hz                (clk_2Hz)
+	
+	);
+	
+	
+	
+	parser #(6) parse_seconds(
+	   
+		.value    (edit_en ? sinit : clk_seconds),
+	   .ones                          (sec_ones),
+		.tens                          (sec_tens)  
+	
+	);
+	
+	seven_seg_driver disp_sec_ones(
+	
+	   .data         (sec_ones),
+		.segments    (s_seg_ones)
+	
+	);
+	
+	assign Seg0 = (s_en & clk_2Hz) ? 1 : s_seg_ones; 
+	
+	seven_seg_driver disp_sec_tens(
+	
+	   .data         (sec_tens),
+		.segments   (s_seg_tens)
+	
+	);
+	
+	assign Seg1 =  (s_en & clk_2Hz) ? 1 : s_seg_tens;  
+	
+	parser #(6) parse_minutes(
+	   
+		.value    (edit_en ? minit : clk_minutes),
+	   .ones                      (min_ones),
+		.tens                      (min_tens)
+	
+	);
+	
+	
+	seven_seg_driver disp_min_ones(
+	
+	   .data             (min_ones),
+		.segments       (m_seg_ones)
+	
+	);
+	
+	assign Seg2 = (m_en & clk_2Hz) ? 1 : m_seg_ones; 
+	
+	seven_seg_driver disp_min_tens(
+	
+	   .data             (min_tens),
+		.segments       (m_seg_tens)
+	
+	);
+	
+	assign Seg3 =  (m_en & clk_2Hz) ? 1 : m_seg_tens; 
+	
+	parser #(6) parse_hours(
+	   
+		.value  (edit_en ? hinit + 1 : clk_hours + 1),
+	   .ones                            (h_ones),
+		.tens                            (h_tens)
+	
+	);
+	
+	seven_seg_driver disp_h_ones(
+	
+	   .data               (h_ones),
+		.segments       (h_seg_ones)
+	
+	);
+	
+	assign Seg4 = (h_en & clk_2Hz) ? 1 : h_seg_ones; 
+	
+	seven_seg_driver disp_h_tens(
+	
+	   .data               (h_tens),
+		.segments       (h_seg_tens)
+	
+	);
+	
+	assign Seg5 =  (h_en & clk_2Hz) ? 1 : h_seg_tens; 
+	 
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clock}
+\begin{Verbatim}
+module clock(input logic      [5:0] hinit, minit, sinit,
+             input logic                 en, set, reset,
+				 input logic                      clk_50MHz,
+				 output logic [5:0] hours, minutes, seconds);
+   
+	logic clk_1Hz, clk_seconds, clk_minutes;
+	
+	
+	clk_divider clk50M_to_1(
+	
+      .cap       (26'd24999999),
+		.clk_in       (clk_50MHz),
+		.reset            (reset),
+		.en                  (en),
+		.clk_out        (clk_1Hz)
+	
+	);
+	
+	clk_counter seconds_counter(
+	
+	   .init             (sinit),
+	   .clk_in          (clk_1Hz),
+		.clk_50MHz     (clk_50MHz),
+		.cap               (6'd59),
+		.reset             (reset),
+		.set                 (set),
+		.value           (seconds),
+		.clk_out     (clk_seconds)
+	
+	);
+	
+	clk_counter minutes_counter(
+	
+	   .init              (minit),
+	   .clk_in      (clk_seconds),
+		.clk_50MHz     (clk_50MHz),
+		.cap               (6'd59),
+		.reset             (reset),
+		.set                 (set),
+		.value           (minutes),
+		.clk_out     (clk_minutes)
+	
+	);
+
+   clk_counter hours_counter(
+	
+	   .init              (hinit),
+	   .clk_in      (clk_minutes),
+		.clk_50MHz     (clk_50MHz),
+		.cap               (6'd11),
+		.reset             (reset),
+		.set                 (set),
+		.value             (hours)
+	
+	);
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: parser}
+\begin{Verbatim}
+module parser #(N = 8)
+               (input logic [N-1:0]     value,
+					 output logic [3:0] ones, tens);
+	
+	 assign ones = value % 4'd10;				
+	 assign tens = (value - ones) / 4'd10;
+					
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: seven_seg_driver}
+\begin{Verbatim}
+module seven_seg_driver(input logic [3:0] data,
+                        output logic [6:0] segments);
+								
+   always_comb
+	   case(data)
+		   //                        abc defg
+			0:         segments = 7'b100_0000;
+			1:         segments = 7'b111_1001;
+			2:         segments = 7'b010_0100;
+			3:         segments = 7'b011_0000;
+			4:         segments = 7'b001_1001;
+			5:         segments = 7'b001_0010;
+			6:         segments = 7'b000_0010;
+			7:         segments = 7'b111_1000;
+			8:         segments = 7'b000_0000;
+			9:         segments = 7'b001_1000;
+			default:   segments = 7'b111_1111;
+		endcase
+	
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clk_divider}
+\begin{Verbatim}
+module clk_divider(input logic     clk_in,
+                   input logic [25:0] cap,
+					    input logic  reset, en,
+						 output logic   clk_out);
+   							
+	logic [25:0] count;						
+   
+	
+	always_ff@(posedge clk_in, posedge reset)
+	   if(reset) 
+		   begin
+			   clk_out <= 0;
+				count <= 0;
+			   
+			end
+		else if(count > cap)
+		   begin
+			   clk_out <= ~clk_out;
+				count <= 0;
+			
+			end
+      else if(en) count <= count + 1;
+	
+    
+
+endmodule 
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clk_counter}
+\begin{Verbatim}
+module clk_counter(input logic [5:0]          init, cap,
+                   input logic               set, reset,
+						 input logic        clk_in, clk_50MHz,
+						 output logic [5:0]             value,
+						 output logic                 clk_out);
+
+   logic gt;
+	
+	counter clk_count(
+	   
+		.init                (init),
+		.en                  (~set),
+		.reset    (reset | clk_out),
+		.clk         (clk_in | set),
+		.count              (value)
+	
+	);
+	
+	
+	comp comparator(
+	   
+		.a    (value),   
+		.b      (cap),
+		.gt      (gt)
+	
+	);
+	
+
+	sync synchronizer(
+	
+	   .clk  (clk_50MHz),
+		.d           (gt),
+		.q      (clk_out)
+	
+	);
+	
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: counter}
+\begin{Verbatim}
+module counter(input logic [5:0]           init,
+               input logic            en, reset,
+					input logic                  clk,
+					output logic [5:0]         count);
+					
+   always_ff@(posedge clk, posedge reset)
+	   if(reset) count <= 0;
+		else if(en) count <= count + 1;
+		else count <= init;
+
+
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: comp}
+\begin{Verbatim}
+module comp(input logic [5:0] a, b,
+            output logic gt);
+ 
+   assign gt = (a > b);
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: sync}
+\begin{Verbatim}
+module sync(input logic  clk,
+            input logic    d,
+			   output logic   q);
+
+
+	logic n;
+	
+	always_ff@(posedge clk) 
+	   begin
+	   
+		   n <= d;
+		   q <= n;
+		
+	   end
+	   
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clock_set}
+\begin{Verbatim}
+module clock_set(input logic start, up, down, left, right,
+                 input logic [5:0] h_curr, m_curr, s_curr,
+                 input logic clk_50MHz,
+					  output logic edit_en, h_en, m_en, s_en,
+					  output logic [5:0] hours, minutes, seconds,
+					  output logic clk_2Hz);
+					  
+   
+	logic [1:0] state_sel;
+
+	
+	
+	clk_divider clk50M_to_2(
+	
+      .cap       (26'd12499999),
+		.clk_in       (clk_50MHz),
+		.reset            (start),
+		.en             (edit_en),
+		.clk_out        (clk_2Hz)
+	
+	);
+	
+	
+	clk_column_sel clk_nav(
+	   .left      (left),
+		.right     (right),
+		.reset      (start),
+		.state    (state_sel)
+	
+	);
+	
+	
+	
+	assign s_en = edit_en & (~state_sel[0] & ~state_sel[1]);
+	assign m_en = edit_en & state_sel[0];
+	assign h_en = edit_en & state_sel[1];
+	
+	
+	updowncounter s_count(
+	
+      .up             (up),
+		.down         (down),
+	   .en           (s_en),
+		.clk_in    (clk_2Hz),
+	   .reset       (start),
+		.cap         (6'd59),
+		.init       (s_curr),
+		.count     (seconds)
+	
+	);
+	
+	updowncounter m_count(
+	
+      .up             (up),
+		.down         (down),
+	   .en           (m_en),
+		.clk_in    (clk_2Hz),
+	   .reset       (start),
+		.cap         (6'd59),
+		.init       (m_curr),
+		.count     (minutes)
+	
+	);
+	
+	updowncounter h_count(
+	
+      .up             (up),
+		.down         (down),
+	   .en           (h_en),
+		.clk_in    (clk_2Hz),
+	   .reset       (start),
+		.cap         (6'd11),
+		.init       (h_curr),
+		.count       (hours)
+	
+	);
+	
+	
+	
+					  
+   
+
+					  
+   always_ff@(posedge start)
+      if(edit_en) edit_en <= 0;
+	   else edit_en <= 1;	
+					  
+
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clk_column_sel}
+\begin{Verbatim}
+module clk_column_sel(input logic left, right,
+                      input logic reset,
+                      output logic [1:0] state);
+							 
+							 
+   logic [1:0] nextstate;
+	
+	assign nextstate[0] = (~state[1] & ~state[0] & left & ~right) | (state[1] & ~state[0] & ~left & right);
+	assign nextstate[1] = (~state[1] & ~state[0] & ~left & right) | (~state[1] & state[0] & left & ~right);
+	
+	
+	always_ff@(posedge left, posedge right, posedge reset)
+	   if(reset) state <= 0;
+		else state <= nextstate;
+	   
+
+   
+
+
+endmodule 
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: updowncounter}
+\begin{Verbatim}
+module updowncounter(input logic     up, down,
+					      input logic           en,
+					      input logic       clk_in,
+					      input logic        reset,
+							input logic [5:0]    cap,init,
+					      output logic [5:0] count);
+							
+   always_ff@(posedge clk_in, posedge reset)
+	   if(reset) count <= init;
+		else if(count < 1 & down & en) count <= cap;
+		else if(count == cap & up & en) count <= 0;
+		else if(en & up) count <= count + 1;
+		else if(en & down) count <= count - 1;
+						 
+   
+	
+
+endmodule 
+\end{Verbatim}
+
 \subsection{Simulation Results}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{NES Controller Reader}
@@ -1027,6 +1720,487 @@ force -deposit inReset 1
 run
 force -deposit inReset 0
 run
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clock_driver}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_driver_sim1.JPG}
+    \caption{Simulating segments flashing when user is setting values}
+    \label{clock_driver_sim1}
+\end{figure}
+The first simulation ran for the clock_driver module was to check if when the user is setting the seconds, minutes or hours, whichever value they are currently setting will flash (so the user knows which value they are setting. The simulation shows that as the user moves left through the display a corresponding segment from that column flashes at every rising edge of the 2 Hz clock signal.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_driver_sim2.JPG}
+    \caption{Simulating the user setting the clock}
+    \label{clock_driver_sim2}
+\end{figure}
+The second simulation shows the user moving right through the display, by pulsing the right signal, and adding 1 to to each value at every rising edge of the 2 Hz clock that the signal up is HIGH. Then for each value the signal down is set HIGH, subtracting 1 at the rising edge of each clock.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_driver_sim3.JPG}
+    \caption{Simulating the setting of values and normal operation of the clock}
+    \label{clock_driver_sim3}
+\end{figure}
+The third and final simulation for this module shows that when the start signal is pulsed while setting the clock, the clock gets set and returns to counting.
+
+Do File:
+\begin{Verbatim}
+add wave -position insertpoint  \
+sim:/clock_driver/clk_seconds
+add wave -position insertpoint  \
+sim:/clock_driver/hinit
+add wave -position insertpoint  \
+sim:/clock_driver/minit
+add wave -position insertpoint  \
+sim:/clock_driver/sinit
+add wave -position insertpoint  \
+sim:/clock_driver/clk/clk_1Hz
+add wave -position insertpoint  \
+sim:/clock_driver/clk_50MHz
+add wave -position end  sim:/clock_driver/clk_set/clk_2Hz
+force clk_set/clk_2Hz 0 0 ps, 1 25 ps -repeat 50 ps
+force clk_50MHz 0 0 ps, 1 1 ps -repeat 2 ps
+force clk/clk_1Hz 0 0 ps, 1 50 ps -repeat 100 ps
+force start 0
+force up 0
+force down 0
+force left 0
+force right 0
+force reset 1
+force en 0
+run
+force start 1
+run
+force start 0
+run
+force start 1
+run
+force start 0
+run
+force en 1
+force reset 0
+run
+force start 1
+run
+force start 0
+run
+force left 1
+run
+force left 0
+run
+force left 1
+run
+force left 0
+run
+force up 1
+run
+force up 0
+force down 1
+run
+force down 0
+force right 1
+run
+force right 0
+force up 1
+run
+force up 0
+force down 1
+run
+force down 0
+force right 1
+run
+force right 0
+force up 1
+run
+force up 0
+force down 1
+run
+force down 0
+force left 1
+run
+force left 0
+force up 1
+run
+force up 0
+force left 1
+run
+force up 1
+run
+force up 0
+force down 1
+run
+force down 0
+force start 1
+run
+force start 0
+run
+force start 1
+run
+force start 0
+run 10000 ns
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clock}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_sim1.JPG}
+    \caption{Simulating hours counting and overflowing}
+    \label{clock_sim1}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_sim2.JPG}
+    \caption{Simulating minutes counting and overflowing}
+    \label{clock_sim2}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_sim3.JPG}
+    \caption{Simulating seconds counting and overflowing}
+    \label{clock_sim3}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force hinit 6'd8
+force minit 6'd50
+force sinit 0
+force en 1
+force set 1
+force reset 0
+force clk_50MHz 0 0 ps, 1 1 ps -repeat 2 ps
+add wave -position end  sim:/clock/clk_1Hz
+force clk_1Hz 0 0 ps, 1 100 ps -repeat 200 ps
+force set 0
+run 100000 ns
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: parser}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/parser_sim.JPG}
+    \caption{Simulating the parser that parses the values of the clock to be displayed}
+    \label{parser_sim}
+\end{figure}
+The parser was simulated for all values but for ease of viewing, this simulation shows all possible outputs for ones and tens once.
+
+Do File:
+\begin{Verbatim}
+add wave *
+force value 8'd0
+run
+force value 8'd1
+run
+force value 8'd2
+run
+force value 8'd3
+run
+force value 8'd4
+run
+force value 8'd5
+run
+force value 8'd6
+run
+force value 8'd7
+run
+force value 8'd8
+run
+force value 8'd9
+run
+force value 8'd10
+run
+force value 8'd21
+run
+force value 8'd32
+run
+force value 8'd43
+run
+force value 8'd54
+run
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: seven_seg_driver}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/seven_segment_driver_sim.JPG}
+    \caption{Simulating all possible outputs for the seven segment display decoder}
+    \label{seven_segment_driver_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force data 6'd0
+run
+force data 6'd1
+run
+force data 6'd2
+run
+force data 6'd3
+run
+force data 6'd4
+run
+force data 6'd5
+run
+force data 6'd6
+run
+force data 6'd7
+run
+force data 6'd8
+run
+force data 6'd9
+run
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clk_divider.JPG}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clk_divider_sim}
+    \caption{Simulating the clk_divider toggling the clk_out output at the specified cap}
+    \label{clk_divider_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+force clk_in 0 0 ps, 1 1 ps -repeat 2 ps
+add wave *
+force cap 26'd24999999
+force reset 1
+run 10 ps
+force reset 0
+run 100000 ns
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clk_counter.JPG}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clk_counter_sim}
+    \caption{Simulating the clk_counter resetting after 59 counts}
+    \label{clk_counter_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force init 6'd57
+force cap 6'd59
+force set 1
+force reset 0
+force clk_50MHz 0 0 ps, 1 1 ps -repeat 2 ps
+force clk_in 0 0 ps, 1 100 ps -repeat 200 ps
+force set 0
+run 900 ps
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: counter}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/counter_sim.JPG}
+    \caption{Simulating the counter module counting from an initial value and resetting}
+    \label{counter_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force init 6'd45
+force en 0
+force reset 0
+force clk 0 0 ps, 1 25 ps -repeat 50 ps
+run
+force en 1
+run 800 ps
+force reset 1
+run
+
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: comp}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/comp_sim.JPG}
+    \caption{Simulating the comparator with a gt output of HIGH when input a is greater than input b}
+    \label{comp_aim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+
+force a 6'd58
+force a 6'd59
+run
+
+force a 6'd59
+run
+
+force a 6'd60
+run 
+
+force a 6'd0
+run 
+
+force a 6'd10
+force b 6'd11
+run
+
+force a 6'd11
+run
+
+force a 6'd12
+run
+
+force a 6'd0
+run
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: sync}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/sync_sim.JPG}
+    \caption{Simulating the input in the synchronizer propagating to the output at the rising edge of the clock}
+    \label{sync_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force clk 0 0 ps, 1 50 ps -repeat 100 ps
+force d 1
+run
+run
+run 10 ps
+force d 0
+run 90 ps
+run
+run
+run
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clock_set.JPG}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clock_set_sim}
+    \caption{Simulating the clock_set module letting the user navigate through the clock and set each value}
+    \label{clock_set_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force start 0
+force up 0
+force down 0
+force left 0
+force right 0
+force h_curr 6'd9
+force m_curr 6'd43
+force s_curr 6'd0
+force clk_50MHz 0 0 ps, 1 1 ps -repeat 2 ps
+force clk_2Hz 0 0 ps, 1 50 ps -repeat 100 ps
+run
+force start 1
+run 10 ps
+force start 0
+run
+force up 1
+force clk_2Hz 0 0 ps, 1 10 ps -repeat 20 ps
+run
+force up 0
+force down 1
+run
+force down 0
+force left 1
+run 5 ps
+force left 0
+force down 1
+run
+run
+force down 0
+run
+force left 1
+run 5 ps
+force left 0
+force up 1
+run
+force left 1
+run
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: clk_column_sel.JPG}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clk_column_sel_sim}
+    \caption{Simulating the clk_column_sel module that lets the user navigate through seconds, minutes and hours}
+    \label{clk_column_sel_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+add wave *
+force start 0
+force up 0
+force down 0
+force left 0
+force right 0
+force h_curr 6'd9
+force m_curr 6'd43
+force s_curr 6'd0
+force clk_50MHz 0 0 ps, 1 1 ps -repeat 2 ps
+force clk_2Hz 0 0 ps, 1 50 ps -repeat 100 ps
+run
+force start 1
+run 10 ps
+force start 0
+run
+force up 1
+force clk_2Hz 0 0 ps, 1 10 ps -repeat 20 ps
+run
+force up 0
+force down 1
+run
+force down 0
+force left 1
+run 5 ps
+force left 0
+force down 1
+run
+run
+force down 0
+run
+force left 1
+run 5 ps
+force left 0
+force up 1
+run
+force left 1
+run
+\end{Verbatim}
+
+\subsubsection{Seven Segment Display: updowncounter}
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/updowncounter_sim.JPG}
+    \caption{Simulating the updowncounter module which can count up or down, and overflow both ways}
+    \label{updowncounter_sim}
+\end{figure}
+
+Do File:
+\begin{Verbatim}
+force clk_in 0 0 ps, 1 25 ps -repeat 50 ps
+force up 0
+force down 0
+add wave *
+force en 1
+force reset 1
+force cap 6'd59
+force init 6'd45
+run
+force reset 0
+force up 1
+run 1100 ps
+force up 0
+force down 1
+run 600 ps
 \end{Verbatim}
 
 %\includepdf[page=-]{Ch3Example}
