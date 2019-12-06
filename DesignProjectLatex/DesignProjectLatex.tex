@@ -127,15 +127,12 @@ INSERT TOP MODULE DESCRIPTION HERE
 
 \subsection{VGA Output}
 
-<<<<<<< HEAD
-INSERT VGA OUTPUT DIAGRAM HERE
-=======
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vgaOutput.JPG}
     \caption{VGA output module diagram}
     \label{vgaOutputDiagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
+
 
 Input: The VGA module takes a 50MHz clock signal, a reset signal, and three button signals for the red, green, and blue inputs.
 
@@ -145,20 +142,17 @@ Description: This module is designed to output a 640x480 resolution VGA signal, 
 
 \subsubsection{VGA hCounterComp}
 
-<<<<<<< HEAD
-INSERT DIAGRAM HERE
 
 Inputs: A 25MHz clock signal, a 50MHz clock signal, and a reset signal.
 Outputs: The horizontal sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
 
 Description: The hCounterComp creates the hSync signal for the VGA driver, as well as indicating that the signal is within the display area so that the RGB values can be communicated to the screen. The hSync signal travels through the horizontal row of pixels on the screen, displaying color when appropriate.
-=======
+
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vga_syncCounterComp.JPG}
     \caption{VGA syncCounterComp module diagram}
     \label{vgaSyncCounterCompDiagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 \subsubsection{VGA vCounterComp}
 
@@ -171,15 +165,11 @@ Description: The vCounterComp module generates the vSync signal for the VGA driv
 
 \subsubsection{VGA counter}
 
-<<<<<<< HEAD
-INSERT DIAGRAM HERE
-=======
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vga_counter.JPG}
     \caption{VGA counter module diagram}
     \label{vgaCounterDiagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A clock signal and a reset signal.
 Outputs: An N-bit binary value.
@@ -188,15 +178,11 @@ Description: This counter adds one to its output value each rising clock edge.
 
 \subsubsection{VGA displayMux}
 
-<<<<<<< HEAD
-INSERT DIAGRAM HERE
-=======
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vga_displayMux.JPG}
     \caption{VGA displayMux module diagram}
     \label{vgaDisplayMuxDiagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A select signal and red, green, and blue binary input values.
 Outputs: Either the inputted RGB values or 0 values.
@@ -205,15 +191,11 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 
 \subsubsection{VGA comparator}
 
-<<<<<<< HEAD
-INSERT DIAGRAM HERE
-=======
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vga_comparator.JPG}
     \caption{VGA comparator module diagram}
     \label{vgaComparatorDiagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A select signal and red, green, and blue binary input values.
 Outputs: Either the inputted RGB values or 0 values.
@@ -222,15 +204,11 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 
 \subsubsection{VGA synchronizer}
 
-<<<<<<< HEAD
-INSERT DIAGRAM HERE
-=======
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vga_synchronizer.JPG}
     \caption{VGA synchronizer module diagram}
     \label{vgaSynchronizerDiagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A clock signal and a 1-bit data value.
 Outputs: A 1-bit data value.
@@ -239,15 +217,11 @@ Description: The synchronizer takes asynchronous inputs and syncs them to the cl
 
 \subsubsection{clockDivBy2}
 
-<<<<<<< HEAD
-INSERT DIAGRAM HERE
-=======
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/clockDivBy2.JPG}
     \caption{The clockDivBy2 module diagram}
     \label{clockDivBy2Diagram}
 \end{figure}
->>>>>>> 6a8a7058eadb4e56cc3d7002e5edf4117ca9b184
 
 Inputs: A clock signal and a reset signal.
 Outputs: A clock signal half as fast as the input clock signal.
