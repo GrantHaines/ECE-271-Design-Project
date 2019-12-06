@@ -7,6 +7,8 @@
 module topLevel
 		(input clock50MHz,
 		 input NESDataYellow,
+		 input [9:0] ADCdata,
+		 output audioOut,
 		 output vgaHsync, vgaVsync,
 		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue);
 		 
@@ -43,5 +45,12 @@ module topLevel
 		.outGreen(vgaOutGreen),
 		.outBlue(vgaOutBlue)
 	);
+
+	periodTime SqTop(
+		.clk(clock50MHz),
+		.data(ADCdata),
+		.q(AudioPin)
+	);
+
 
 endmodule

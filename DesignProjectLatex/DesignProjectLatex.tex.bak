@@ -206,9 +206,11 @@ Our square wave generator uses a simple algorithm to take a 10-bit array of data
 1600/1123 \approx (10/7)
 \end{equation}
 
-The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{Hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
-\section{Hardware}
+The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
 
+\section{Hardware}%%%%%%%%%%%%%%%
+
+DISCUSSSSSSSSSSSSSSSSSSSSSSSS
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/hardwareDiagram.jpg}
     \caption{ }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.2)  5 DEC 2019 22:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.2)  6 DEC 2019 09:25
 entering extended mode
 **./DesignProjectLatex.tex
 (DesignProjectLatex.tex
@@ -894,231 +894,144 @@ loading the todonotes package. on input line 65.
 \openout7 = `DesignProjectLatex.toc'.
 
  [2]
-<images/NEScontroller.jpg, id=248, 1026.83624pt x 745.78625pt>
+<images/NEScontroller.jpg, id=253, 1026.83624pt x 745.78625pt>
 File: images/NEScontroller.jpg Graphic file (type jpg)
 <use images/NEScontroller.jpg>
 Package pdftex.def Info: images/NEScontroller.jpg  used on input line 89.
 (pdftex.def)             Requested size: 256.07741pt x 185.9909pt.
-<images/nesSchema.png, id=249, 1290.8225pt x 714.67pt>
+<images/nesSchema.png, id=254, 1290.8225pt x 714.67pt>
 File: images/nesSchema.png Graphic file (type png)
 <use images/nesSchema.png>
 Package pdftex.def Info: images/nesSchema.png  used on input line 95.
 (pdftex.def)             Requested size: 341.43437pt x 189.03767pt.
-<images/nesclock.jpg, id=251, 469.755pt x 161.10187pt>
+<images/nesclock.jpg, id=256, 469.755pt x 161.10187pt>
 File: images/nesclock.jpg Graphic file (type jpg)
 <use images/nesclock.jpg>
 Package pdftex.def Info: images/nesclock.jpg  used on input line 102.
 (pdftex.def)             Requested size: 341.43437pt x 117.09453pt.
  [3 <./images/NEScontroller.jpg> <./images/nesSchema.png>]
-<images/nano.jpg, id=262, 1003.75pt x 1003.75pt>
+<images/nano.jpg, id=267, 1003.75pt x 1003.75pt>
 File: images/nano.jpg Graphic file (type jpg)
 <use images/nano.jpg>
 Package pdftex.def Info: images/nano.jpg  used on input line 113.
 (pdftex.def)             Requested size: 256.07741pt x 256.08305pt.
  [4 <./images/nesclock.jpg> <./images/nano.jpg>] [5]
-
-LaTeX Warning: Reference `hardware' on page 6 undefined on input line 209.
-
-<images/hardwareDiagram.jpg, id=277, 990.70125pt x 946.53625pt>
+<images/hardwareDiagram.jpg, id=283, 990.70125pt x 946.53625pt>
 File: images/hardwareDiagram.jpg Graphic file (type jpg)
 <use images/hardwareDiagram.jpg>
 Package pdftex.def Info: images/hardwareDiagram.jpg  used on input line 215.
 (pdftex.def)             Requested size: 341.43437pt x 326.20872pt.
-[6 <./images/hardwareDiagram.jpg>]
+ [6 <./images/hardwareDiagram.jpg>]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 232.
 
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [7] [8] [9] [10]
-[11] [12] [13] [14] [15]
-<images/NESSIM.png, id=339, 616.3025pt x 201.75375pt>
+)
+[7] [8] [9] [10] [11] [12] [13] [14] [15]
+<images/NESSIM.png, id=332, 616.3025pt x 201.75375pt>
 File: images/NESSIM.png Graphic file (type png)
 <use images/NESSIM.png>
 Package pdftex.def Info: images/NESSIM.png  used on input line 771.
 (pdftex.def)             Requested size: 341.43437pt x 111.77455pt.
-<images/contra.jpg, id=341, 803.0pt x 481.8pt>
+<images/contra.jpg, id=334, 803.0pt x 481.8pt>
 File: images/contra.jpg Graphic file (type jpg)
 <use images/contra.jpg>
 Package pdftex.def Info: images/contra.jpg  used on input line 779.
 (pdftex.def)             Requested size: 341.43437pt x 204.86153pt.
-<images/NESSIMcontra.png, id=342, 629.85312pt x 196.23312pt>
+<images/NESSIMcontra.png, id=335, 629.85312pt x 196.23312pt>
 File: images/NESSIMcontra.png Graphic file (type png)
 <use images/NESSIMcontra.png>
 Package pdftex.def Info: images/NESSIMcontra.png  used on input line 785.
 (pdftex.def)             Requested size: 341.43437pt x 106.37451pt.
  [16 <./images/NESSIM.png> <./images/contra.jpg> <./images/NESSIMcontra.png>]
-<images/squareSim.png, id=355, 608.77437pt x 173.64874pt>
+<images/squareSim.png, id=346, 608.77437pt x 173.64874pt>
 File: images/squareSim.png Graphic file (type png)
 <use images/squareSim.png>
 Package pdftex.def Info: images/squareSim.png  used on input line 821.
 (pdftex.def)             Requested size: 341.43437pt x 97.39366pt.
-<images/vgaOutputSim.png, id=356, 647.41875pt x 191.9672pt>
+<images/vgaOutputSim.png, id=347, 647.41875pt x 191.9672pt>
 File: images/vgaOutputSim.png Graphic file (type png)
 <use images/vgaOutputSim.png>
 Package pdftex.def Info: images/vgaOutputSim.png  used on input line 829.
 (pdftex.def)             Requested size: 341.43437pt x 101.2383pt.
  [17 <./images/squareSim.png> <./images/vgaOutputSim.png>]
-<images/vgaHCounterCompSim.png, id=367, 646.66594pt x 100.12407pt>
+<images/vgaHCounterCompSim.png, id=356, 646.66594pt x 100.12407pt>
 File: images/vgaHCounterCompSim.png Graphic file (type png)
 <use images/vgaHCounterCompSim.png>
 Package pdftex.def Info: images/vgaHCounterCompSim.png  used on input line 858.
 
 (pdftex.def)             Requested size: 341.43437pt x 52.86383pt.
-<images/vgaVCounterCompSim.png, id=368, 646.66594pt x 98.61844pt>
+<images/vgaVCounterCompSim.png, id=357, 646.66594pt x 98.61844pt>
 File: images/vgaVCounterCompSim.png Graphic file (type png)
 <use images/vgaVCounterCompSim.png>
 Package pdftex.def Info: images/vgaVCounterCompSim.png  used on input line 883.
 
 (pdftex.def)             Requested size: 341.43437pt x 52.06888pt.
  [18 <./images/vgaHCounterCompSim.png> <./images/vgaVCounterCompSim.png>]
-<images/vgaCounterSim.png, id=379, 628.59843pt x 57.96657pt>
+<images/vgaCounterSim.png, id=366, 628.59843pt x 57.96657pt>
 File: images/vgaCounterSim.png Graphic file (type png)
 <use images/vgaCounterSim.png>
 Package pdftex.def Info: images/vgaCounterSim.png  used on input line 908.
 (pdftex.def)             Requested size: 341.43437pt x 31.48544pt.
-<images/vgaDisplayMuxSim.png, id=380, 581.92406pt x 112.16907pt>
+<images/vgaDisplayMuxSim.png, id=367, 581.92406pt x 112.16907pt>
 File: images/vgaDisplayMuxSim.png Graphic file (type png)
 <use images/vgaDisplayMuxSim.png>
 Package pdftex.def Info: images/vgaDisplayMuxSim.png  used on input line 929.
 (pdftex.def)             Requested size: 341.43437pt x 65.81459pt.
-<images/vgaCompSim.png, id=381, 414.79968pt x 124.21407pt>
+<images/vgaCompSim.png, id=368, 414.79968pt x 124.21407pt>
 File: images/vgaCompSim.png Graphic file (type png)
 <use images/vgaCompSim.png>
 Package pdftex.def Info: images/vgaCompSim.png  used on input line 958.
 (pdftex.def)             Requested size: 341.43437pt x 102.2485pt.
-
-[19 <./images/vgaCounterSim.png> <./images/vgaDisplayMuxSim.png>]
-<images/vgaSyncSim.png, id=393, 630.10406pt x 60.97781pt>
+ [19 <./images/vgaCounterSim.png> <./images/vgaDisplayMuxSim.png>]
+<images/vgaSyncSim.png, id=378, 630.10406pt x 60.97781pt>
 File: images/vgaSyncSim.png Graphic file (type png)
 <use images/vgaSyncSim.png>
 Package pdftex.def Info: images/vgaSyncSim.png  used on input line 991.
 (pdftex.def)             Requested size: 341.43437pt x 33.04196pt.
-<images/clockDivBy2Sim.png, id=394, 628.59843pt x 59.47218pt>
+<images/clockDivBy2Sim.png, id=379, 628.59843pt x 59.47218pt>
 File: images/clockDivBy2Sim.png Graphic file (type png)
 <use images/clockDivBy2Sim.png>
 Package pdftex.def Info: images/clockDivBy2Sim.png  used on input line 1012.
 (pdftex.def)             Requested size: 341.43437pt x 32.30324pt.
- [20 <./images/vgaCompSim.png> <./images/vgaSyncSim.png>] [21 <./images/clockDi
-vBy2Sim.png>]
+
+[20 <./images/vgaCompSim.png> <./images/vgaSyncSim.png>] [21 <./images/clockDiv
+By2Sim.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1034.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1034.
-
-(DesignProjectLatex.aux)
+ (DesignProjectLatex.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1034.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1034.
 
-
-
-Package rerunfilecheck Warning: File `DesignProjectLatex.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `DesignProjectLatex.out':
-(rerunfilecheck)             Before: F4374AB92F46CEFDE8BD26F3D8F890EB;2798
-(rerunfilecheck)             After:  03D85F3BB5FE3ACE8F839CA408E4413B;2842.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `DesignProjectLatex.out' has not changed.
+(rerunfilecheck)             Checksum: 03D85F3BB5FE3ACE8F839CA408E4413B;2842.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1034.
  ) 
 Here is how much of TeX's memory you used:
- 21704 strings out of 492895
- 391850 string characters out of 3133485
- 532705 words of memory out of 3000000
- 25079 multiletter control sequences out of 15000+200000
+ 21682 strings out of 492895
+ 391431 string characters out of 3133485
+ 532738 words of memory out of 3000000
+ 25080 multiletter control sequences out of 15000+200000
  15505 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,8n,81p,961b,487s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsubsection.5.2.10} has been referenced but doe
-s not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.9} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.8} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.7} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.6} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.5} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.4} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.3} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.2} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.2.1} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.11} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.10} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.9} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.8} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.7} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.6} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.5} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.4} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.3} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.2} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.5.1.1} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
- <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
-1000.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi
-600\ecrm0800.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappe
-n/ec/dpi600\ecrm0600.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/p
-k/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9
-\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Ben\AppData\Local\Mi
-KTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Ben\AppData\
-Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Ben\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Us
-ers\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on DesignProjectLatex.pdf (21 pages, 1039868 bytes).
+ <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ec
+tt1000.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/d
+pi600\ecrm0800.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecrm0600.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2
+.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Ben\AppData\Local\
+MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Ben\AppDat
+a\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Be
+n\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\
+Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.
+pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on DesignProjectLatex.pdf (21 pages, 1038191 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 500000)
- 514 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 781 PDF objects out of 1000 (max. 8388607)
+ 83 named destinations out of 1000 (max. 500000)
+ 522 words of extra memory for PDF output out of 10000 (max. 10000000)
 
