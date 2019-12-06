@@ -14,11 +14,11 @@
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,      
-    urlcolor=cyan,}
+    urlcolor=cyan}
     
 \usepackage{fancyvrb}	
 
-%\usepackage{pdfpages}%to insert pdfs
+%%\usepackage{pdfpages}%to insert pdfs
  
 \usepackage{float}		%Ben trying to format figures
 
@@ -41,7 +41,7 @@
 \newcommand{\sortitem}[1]{%
   \DTLnewrow{list}% Create a new entry
   \DTLnewdbentry{list}{description}{#1}% Add entry as description
-}
+	}
 \newenvironment{sortedlist}{%
   \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}% Create new/discard old list
 }{%
@@ -149,7 +149,7 @@ Outputs: The horizontal sync rate for the VGA output and a signal indicating tha
 Description: The hCounterComp creates the hSync signal for the VGA driver, as well as indicating that the signal is within the display area so that the RGB values can be communicated to the screen. The hSync signal travels through the horizontal row of pixels on the screen, displaying color when appropriate.
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/vga_syncCounterComp.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/vgasyncCounterComp.JPG}
     \caption{VGA syncCounterComp module diagram}
     \label{vgaSyncCounterCompDiagram}
 \end{figure}
@@ -166,7 +166,7 @@ Description: The vCounterComp module generates the vSync signal for the VGA driv
 \subsubsection{VGA counter}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/vga_counter.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/vgacounter.JPG}
     \caption{VGA counter module diagram}
     \label{vgaCounterDiagram}
 \end{figure}
@@ -179,7 +179,7 @@ Description: This counter adds one to its output value each rising clock edge.
 \subsubsection{VGA displayMux}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/vga_displayMux.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/vgadisplayMux.JPG}
     \caption{VGA displayMux module diagram}
     \label{vgaDisplayMuxDiagram}
 \end{figure}
@@ -192,7 +192,7 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 \subsubsection{VGA comparator}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/vga_comparator.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/vgacomparator.JPG}
     \caption{VGA comparator module diagram}
     \label{vgaComparatorDiagram}
 \end{figure}
@@ -205,7 +205,7 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 \subsubsection{VGA synchronizer}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/vga_synchronizer.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/vgasynchronizer.JPG}
     \caption{VGA synchronizer module diagram}
     \label{vgaSynchronizerDiagram}
 \end{figure}
@@ -239,16 +239,16 @@ Our square wave generator uses a simple algorithm to take a 10-bit array of data
 The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
 
 \subsection{Seven Segment Display}
-Inputs: The seven segment display module (clock\_driver.sv) has an input for a 50 MHz clock signal, a reset, an enable, and start, left, right, up, down input signals from the NES controller.
-Outputs: The clock_driver module has 6 7-bit outputs to connect to the seven segment display on the De10-Lite.
+Inputs: The seven segment display module (clock\_ driver.sv) has an input for a 50 MHz clock signal, a reset, an enable, and start, left, right, up, down input signals from the NES controller.
+Outputs: The clock\_ driver module has 6 7-bit outputs to connect to the seven segment display on the De10-Lite.
 
 Description: This module is designed to have a working (and settable) 12 hour clock. If the user presses start they will be able to set the clock to any value. While setting the clock the user can navigate between seconds, minutes and hours. When a user is editing one of these states, the two corresponding seven segment displays will flash. When the user presses start again the time specified will start counting, as a clock should. The value that represents the hours on the clock will be a value between 0 and 11, but the displayed value for hours will be incremented by 1 in order to have the hours fall between 1 and 12.
 
 \subsubsection{Seven Segment Display: clock}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_driver.JPG}
-    \caption{Block diagram for the clock_driver module}
-    \label{clock_driver}
+    \includegraphics[width=0.8 \linewidth]{images/clockdriver.JPG}
+    \caption{Block diagram for the clock\_ driver module}
+    \label{clockdriver}
 \end{figure}
 
 Inputs: This module has an enable input and a reset input which will be driven by the select button on the NES controller. It has a clk input which will be assigned to the 50 MHz clock. It also has a set input, which will set the clock the the last three inputs, which are the initial values of seconds, minutes and hours.
@@ -268,11 +268,11 @@ Outputs: This module has two outputs, the ones digit of value and the tens digit
 
 Description: The parser module takes a 6 bit input and separates it out into its two decimal, ones and tens, digits.
 
-\subsubsection{Seven Segment Display: seven_seg_driver}
+\subsubsection{Seven Segment Display: seven seg driver}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/seven_seg_driver.JPG}
-    \caption{Block diagram for the seven_seg_driver module}
-    \label{seven_swg_driver}
+    \includegraphics[width=0.8 \linewidth]{images/sevensegdriver.JPG}
+    \caption{Block diagram for the seven\_ seg\_ driver module}
+    \label{sevensegdriver}
 \end{figure}
 
 Inputs: This module has one input, d which is a 4 bit bus.
@@ -280,30 +280,30 @@ Outputs: This module has one output, s, a 7 bit bus.
 
 Description: This module decodes a 4 bit binary value into a 7 bit bus that will drive an active low seven segment display.
 
-\subsubsection{Seven Segment Display: clk_divider}
+\subsubsection{Seven Segment Display: clk divider}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clk_divider.JPG}
-    \caption{Block diagram for the clk_divider module}
-    \label{clk_driver}
+    \includegraphics[width=0.8 \linewidth]{images/clkdivider.JPG}
+    \caption{Block diagram for the clk divider module}
+    \label{clkdriver}
 \end{figure}
 
-Inputs: This module has four inputs, cap , reset, en and clk_in.
-Outputs: This module has one output, clk_out.
+Inputs: This module has four inputs, cap , reset, en and clk\_ in.
+Outputs: This module has one output, clk\_ out.
 
-Description: This module takes a clock signal as an input and when that clock signal has cycled the number of times specified by cap, it will toggle the clk_out signal, or it divides the clock signal.
+Description: This module takes a clock signal as an input and when that clock signal has cycled the number of times specified by cap, it will toggle the clk\_ out signal, or it divides the clock signal.
 
-\subsubsection{Seven Segment Display: clk_counter}
+\subsubsection{Seven Segment Display: clk counter}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clk_counter.JPG}
-    \caption{Block diagram for the clk_counter module}
-    \label{clk_counter}
+    \includegraphics[width=0.8 \linewidth]{images/clkcounter.JPG}
+    \caption{Block diagram for the clk\_ counter module}
+    \label{clkcounter}
 \end{figure}
 
 
-Inputs: This module has six inputs, init, set, reset, clk_in, cap and clk_50MHz.
-Outputs: This module has two outputs, value and clk_out.
+Inputs: This module has six inputs, init, set, reset, clk\_ in, cap and clk\_ 50MHz.
+Outputs: This module has two outputs, value and clk\_ out.
 
-Description: The clk_counter module, is a counter that increments on every rising edge of the clk_in. It then uses a comparator and synchronizer to see if that value exceeds the cap input, and if it does it resets to 0.
+Description: The clk\_ counter module, is a counter that increments on every rising edge of the clk\_ in. It then uses a comparator and synchronizer to see if that value exceeds the cap input, and if it does it resets to 0.
 
 \subsubsection{Seven Segment Display: counter}
 \begin{figure}[H]
@@ -312,7 +312,7 @@ Description: The clk_counter module, is a counter that increments on every risin
     \label{counter}
 \end{figure}
 
-Inputs: The counter module takes 4 inputs, init, reset and clk_in.
+Inputs: The counter module takes 4 inputs, init, reset and clk\_ in.
 Outputs: This module has one output, value.
 
 Description: This module is a counter used for the seconds, minutes and hours of the clocks. If reset and en are LOW the count is set to equal the init input.
@@ -341,26 +341,26 @@ Outputs: One output, q.
 
 Description: Turns an asynchronous value into a synchronous value.
 
-\subsubsection{Seven Segment Display: clock_set}
+\subsubsection{Seven Segment Display: clockset}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_set.JPG}
-    \caption{Block diagram for the clock_set module}
-    \label{clock_set}
+    \includegraphics[width=0.8 \linewidth]{images/clockset.JPG}
+    \caption{Block diagram for the clockset module}
+    \label{clockset}
 \end{figure}
 
-Inputs: clock_set has 9 inputs, start, clk_50MHz, left, right, up, down, s_curr, m_curr and h_curr.
-Outputs: It has 4 outputs, clk_2Hz, sinit, minit and hinit.
+Inputs: clockset has 9 inputs, start, clk50MHz, left, right, up, down, scurr, mcurr and hcurr.
+Outputs: It has 4 outputs, clk2Hz, sinit, minit and hinit.
 
 Description: Clock set lets a user set the clock using a NES controller. When start is pulsed the clock goes into edit mode, the user can navigate through seconds, minutes and hours using the left or a button and the right or b button. The user can then add or subtract to the values, and when they find a desirable time to set the clock, they can push the start button again and it will send the outputs to the clock module.
 
-\subsubsection{Seven Segment Display: clk_column_sel}
+\subsubsection{Seven Segment Display: clk column sel}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clk_column_sel.JPG}
-    \caption{Block diagram for the clk_column_sel module}
-    \label{clk_column_sel}
+    \includegraphics[width=0.8 \linewidth]{images/clkcolumnsel.JPG}
+    \caption{Block diagram for the clk column sel module}
+    \label{clkcolumnsel}
 \end{figure}
 
-Inputs:clk_column_sel has three inputs, left, right and reset. 
+Inputs:clk column sel has three inputs, left, right and reset. 
 Outputs: This module has one output, which is the state of the system. 
 
 Description:This module is a state machine that lets the use navigate through the seven segment displays and determines which column the user is editing by encoding seconds, minutes and hours into states. 
@@ -935,7 +935,7 @@ module clockDivBy2
 endmodule
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clock_driver}
+\subsubsection{Seven Segment Display: clockdriver}
 \begin{Verbatim}
 module clock_driver(input logic clk_50MHz,
                     input logic start, up, down, left, right,
@@ -1146,7 +1146,7 @@ module parser #(N = 8)
 endmodule 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: seven_seg_driver}
+\subsubsection{Seven Segment Display: seven seg driver}
 \begin{Verbatim}
 module seven_seg_driver(input logic [3:0] data,
                         output logic [6:0] segments);
@@ -1170,7 +1170,7 @@ module seven_seg_driver(input logic [3:0] data,
 endmodule 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clk_divider}
+\subsubsection{Seven Segment Display: clkdivider}
 \begin{Verbatim}
 module clk_divider(input logic     clk_in,
                    input logic [25:0] cap,
@@ -1201,7 +1201,7 @@ endmodule
 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clk_counter}
+\subsubsection{Seven Segment Display: clkcounter}
 \begin{Verbatim}
 module clk_counter(input logic [5:0]          init, cap,
                    input logic               set, reset,
@@ -1291,7 +1291,7 @@ module sync(input logic  clk,
 endmodule 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clock_set}
+\subsubsection{Seven Segment Display: clockset}
 \begin{Verbatim}
 module clock_set(input logic start, up, down, left, right,
                  input logic [5:0] h_curr, m_curr, s_curr,
@@ -1385,7 +1385,7 @@ module clock_set(input logic start, up, down, left, right,
 endmodule 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clk_column_sel}
+\subsubsection{Seven Segment Display: clk column sel}
 \begin{Verbatim}
 module clk_column_sel(input logic left, right,
                       input logic reset,
@@ -1696,26 +1696,26 @@ force -deposit inReset 0
 run
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clock_driver}
+\subsubsection{Seven Segment Display: clockdriver}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_driver_sim1.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/clockdriversim1.JPG}
     \caption{Simulating segments flashing when user is setting values}
-    \label{clock_driver_sim1}
+    \label{clockdriversim1}
 \end{figure}
-The first simulation ran for the clock_driver module was to check if when the user is setting the seconds, minutes or hours, whichever value they are currently setting will flash (so the user knows which value they are setting. The simulation shows that as the user moves left through the display a corresponding segment from that column flashes at every rising edge of the 2 Hz clock signal.
+The first simulation ran for the clock\_ driver module was to check if when the user is setting the seconds, minutes or hours, whichever value they are currently setting will flash (so the user knows which value they are setting. The simulation shows that as the user moves left through the display a corresponding segment from that column flashes at every rising edge of the 2 Hz clock signal.
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_driver_sim2.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/clockdriversim2.JPG}
     \caption{Simulating the user setting the clock}
-    \label{clock_driver_sim2}
+    \label{clockdriversim2}
 \end{figure}
 The second simulation shows the user moving right through the display, by pulsing the right signal, and adding 1 to to each value at every rising edge of the 2 Hz clock that the signal up is HIGH. Then for each value the signal down is set HIGH, subtracting 1 at the rising edge of each clock.
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_driver_sim3.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/clockdriversim3.JPG}
     \caption{Simulating the setting of values and normal operation of the clock}
-    \label{clock_driver_sim3}
+    \label{clockdriversim3}
 \end{figure}
 The third and final simulation for this module shows that when the start signal is pulsed while setting the clock, the clock gets set and returns to counting.
 
@@ -1820,21 +1820,21 @@ run 10000 ns
 \subsubsection{Seven Segment Display: clock}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_sim1.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/clocksim1.JPG}
     \caption{Simulating hours counting and overflowing}
-    \label{clock_sim1}
+    \label{clocksim1}
 \end{figure}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_sim2.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/clocksim2.JPG}
     \caption{Simulating minutes counting and overflowing}
-    \label{clock_sim2}
+    \label{clocksim2}
 \end{figure}
 
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_sim3.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/clocksim3.JPG}
     \caption{Simulating seconds counting and overflowing}
-    \label{clock_sim3}
+    \label{clocksim3}
 \end{figure}
 
 Do File:
@@ -1856,9 +1856,9 @@ run 100000 ns
 
 \subsubsection{Seven Segment Display: parser}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/parser_sim.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/parsersim.JPG}
     \caption{Simulating the parser that parses the values of the clock to be displayed}
-    \label{parser_sim}
+    \label{parsersim}
 \end{figure}
 The parser was simulated for all values but for ease of viewing, this simulation shows all possible outputs for ones and tens once.
 
@@ -1898,11 +1898,11 @@ run
 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: seven_seg_driver}
+\subsubsection{Seven Segment Display: sevensegdriver}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/seven_segment_driver_sim.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/sevensegmentdriversim.JPG}
     \caption{Simulating all possible outputs for the seven segment display decoder}
-    \label{seven_segment_driver_sim}
+    \label{sevensegmentdriversim}
 \end{figure}
 
 Do File:
@@ -1931,11 +1931,11 @@ run
 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clk_divider.JPG}
+\subsubsection{Seven Segment Display: clk divider}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clk_divider_sim}
-    \caption{Simulating the clk_divider toggling the clk_out output at the specified cap}
-    \label{clk_divider_sim}
+    \includegraphics[width=0.8 \linewidth]{images/clkdividersim.jpg}
+    \caption{Simulating the clk divider toggling the clk out output at the specified cap}
+    \label{clkdividersim}
 \end{figure}
 
 Do File:
@@ -1950,11 +1950,11 @@ run 100000 ns
 
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clk_counter.JPG}
+\subsubsection{Seven Segment Display: clkcounter}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clk_counter_sim}
-    \caption{Simulating the clk_counter resetting after 59 counts}
-    \label{clk_counter_sim}
+    \includegraphics[width=0.8 \linewidth]{images/clkcountersim.jpg}
+    \caption{Simulating the clk counter resetting after 59 counts}
+    \label{clkcountersim}
 \end{figure}
 
 Do File:
@@ -1973,9 +1973,9 @@ run 900 ps
 
 \subsubsection{Seven Segment Display: counter}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/counter_sim.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/countersim.JPG}
     \caption{Simulating the counter module counting from an initial value and resetting}
-    \label{counter_sim}
+    \label{countersim}
 \end{figure}
 
 Do File:
@@ -1995,9 +1995,9 @@ run
 
 \subsubsection{Seven Segment Display: comp}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/comp_sim.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/compsim.JPG}
     \caption{Simulating the comparator with a gt output of HIGH when input a is greater than input b}
-    \label{comp_aim}
+    \label{compaim}
 \end{figure}
 
 Do File:
@@ -2033,9 +2033,9 @@ run
 
 \subsubsection{Seven Segment Display: sync}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/sync_sim.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/syncsim.JPG}
     \caption{Simulating the input in the synchronizer propagating to the output at the rising edge of the clock}
-    \label{sync_sim}
+    \label{syncsim}
 \end{figure}
 
 Do File:
@@ -2053,11 +2053,11 @@ run
 run
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clock_set.JPG}
+\subsubsection{Seven Segment Display: clockset}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clock_set_sim}
-    \caption{Simulating the clock_set module letting the user navigate through the clock and set each value}
-    \label{clock_set_sim}
+    \includegraphics[width=0.8 \linewidth]{images/clocksetsim.jpg}
+    \caption{Simulating the clock set module letting the user navigate through the clock and set each value}
+    \label{clocksetsim}
 \end{figure}
 
 Do File:
@@ -2102,11 +2102,11 @@ force left 1
 run
 \end{Verbatim}
 
-\subsubsection{Seven Segment Display: clk_column_sel.JPG}
+\subsubsection{Seven Segment Display: clk column sel}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/clk_column_sel_sim}
-    \caption{Simulating the clk_column_sel module that lets the user navigate through seconds, minutes and hours}
-    \label{clk_column_sel_sim}
+    \includegraphics[width=0.8 \linewidth]{images/clkcolumnselsim.jpg}
+    \caption{Simulating the clk column sel module that lets the user navigate through seconds, minutes and hours}
+    \label{clkcolumnselsim}
 \end{figure}
 
 Do File:
@@ -2153,7 +2153,7 @@ run
 
 \subsubsection{Seven Segment Display: updowncounter}
 \begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/updowncounter_sim.JPG}
+    \includegraphics[width=0.8 \linewidth]{images/updowncountersim.JPG}
     \caption{Simulating the updowncounter module which can count up or down, and overflow both ways}
     \label{updowncounter_sim}
 \end{figure}
