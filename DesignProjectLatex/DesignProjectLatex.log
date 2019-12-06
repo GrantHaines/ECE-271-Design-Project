@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.2)  4 DEC 2019 23:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.2)  5 DEC 2019 16:55
 entering extended mode
 **./DesignProjectLatex.tex
 (DesignProjectLatex.tex
@@ -952,16 +952,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 328.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 328.
 Package rerunfilecheck Info: File `DesignProjectLatex.out' has not changed.
 (rerunfilecheck)             Checksum: D822BDCA90CE23035543C03BF301F4B3;768.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 328.
  ) 
 Here is how much of TeX's memory you used:
  21538 strings out of 492895
  388738 string characters out of 3133485
- 527021 words of memory out of 3000000
+ 527105 words of memory out of 3000000
  24997 multiletter control sequences out of 15000+200000
  13207 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -974,7 +970,7 @@ ur/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2.9\fonts
 /pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Ben\AppData\Local\MiKTeX\2
 .9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Ben\AppData\Local\
 MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk>
-Output written on DesignProjectLatex.pdf (8 pages, 689535 bytes).
+Output written on DesignProjectLatex.pdf (8 pages, 689566 bytes).
 PDF statistics:
  448 PDF objects out of 1000 (max. 8388607)
  29 named destinations out of 1000 (max. 500000)
