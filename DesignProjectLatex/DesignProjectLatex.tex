@@ -140,13 +140,7 @@ Output: The VGA module outputs a vSync and an hSync signal, and three 4-bit valu
 
 Description: This module is designed to output a 640x480 resolution VGA signal, allowing it to display an RGB color value on a screen. The hSync signal tells a computer monitor how quickly to update each column of the screen, while the vSync signal tells it how quickly to update each row. The color inputs work by having each button press increment a 4-bit counter that goes to the appropriate color output.
 
-\subsubsection{VGA hCounterComp}
-
-
-Inputs: A 25MHz clock signal, a 50MHz clock signal, and a reset signal.
-Outputs: The horizontal sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
-
-Description: The hCounterComp creates the hSync signal for the VGA driver, as well as indicating that the signal is within the display area so that the RGB values can be communicated to the screen. The hSync signal travels through the horizontal row of pixels on the screen, displaying color when appropriate.
+\subsubsection{VGA syncCounterComp}
 
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vgasyncCounterComp.JPG}
@@ -154,14 +148,11 @@ Description: The hCounterComp creates the hSync signal for the VGA driver, as we
     \label{vgaSyncCounterCompDiagram}
 \end{figure}
 
-\subsubsection{VGA vCounterComp}
+Inputs: A varying-rate clock signal, a 50MHz clock signal, and a reset signal.
 
-INSERT DIAGRAM HERE
+Outputs: Either the horizontal or vertical sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
 
-Inputs: The hSync signal as a clock, a 50MHz clock signal, and a reset signal.
-Outputs: The vertical sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
-
-Description: The vCounterComp module generates the vSync signal for the VGA driver, which tells it when to move on to the next row of pixels, as well as telling it when it is within the displayable area.
+Description: The syncCounterComp module generates the hSync and vSync signal for the VGA driver, which tells it when to move on to the next row or column of pixels, as well as telling it when it is within the displayable area.
 
 \subsubsection{VGA counter}
 
@@ -172,6 +163,7 @@ Description: The vCounterComp module generates the vSync signal for the VGA driv
 \end{figure}
 
 Inputs: A clock signal and a reset signal.
+
 Outputs: An N-bit binary value.
 
 Description: This counter adds one to its output value each rising clock edge.
@@ -185,6 +177,7 @@ Description: This counter adds one to its output value each rising clock edge.
 \end{figure}
 
 Inputs: A select signal and red, green, and blue binary input values.
+
 Outputs: Either the inputted RGB values or 0 values.
 
 Description: The VGA displayMux decides whether to send the inputted RGB values to the screen or not to, depending on whether or not we are within the displayable area, as given by the hSync and vSync modules.
@@ -198,6 +191,7 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 \end{figure}
 
 Inputs: A select signal and red, green, and blue binary input values.
+
 Outputs: Either the inputted RGB values or 0 values.
 
 Description: The VGA displayMux decides whether to send the inputted RGB values to the screen or not to, depending on whether or not we are within the displayable area, as given by the hSync and vSync modules.
@@ -211,6 +205,7 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 \end{figure}
 
 Inputs: A clock signal and a 1-bit data value.
+
 Outputs: A 1-bit data value.
 
 Description: The synchronizer takes asynchronous inputs and syncs them to the clock edge.
@@ -224,6 +219,7 @@ Description: The synchronizer takes asynchronous inputs and syncs them to the cl
 \end{figure}
 
 Inputs: A clock signal and a reset signal.
+
 Outputs: A clock signal half as fast as the input clock signal.
 
 Description: This module takes in a clock input and divides its frequency by 2. For example, a 50MHz clock input would become a 25MHz clock input.
@@ -684,21 +680,25 @@ module vgaOutput
 		 output vSync,
 		 output [3:0] outRed, outGreen, outBlue);
 	
+	logic [3:0] redCount;
+	logic [3:0] greenCount;
+	logic [3:0] blueCount;
+	
 	vga_counter #(.N(4)) redCounter (
 		.clk(inRed),
-		.reset(inReset),
+		.reset(~inReset),
 		.q(redCount)
 	);
 	
 	vga_counter #(.N(4)) greenCounter (
 		.clk(inGreen),
-		.reset(inReset),
+		.reset(~inReset),
 		.q(greenCount)
 	);
 	
 	vga_counter #(.N(4)) blueCounter (
 		.clk(inBlue),
-		.reset(inReset),
+		.reset(~inReset),
 		.q(blueCount)
 	);
 
@@ -708,7 +708,7 @@ module vgaOutput
 		.outClock(clock25MHz)
 	);
 	
-	vga_hCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
+	vga_syncCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
 		.inClock(clock25MHz),
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
@@ -722,7 +722,7 @@ module vgaOutput
 		.outClock(hClock)
 	); 
 	
-	vga_vCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
+	vga_syncCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
 		.inClock(hClock),
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
@@ -743,63 +743,10 @@ module vgaOutput
 endmodule
 \end{Verbatim}
 
-\subsubsection{VGA hCounterComp}
+\subsubsection{VGA syncCounterComp}
 
 \begin{Verbatim}
-module vga_hCounterComp #(parameter a = 10, b = 10, c = 10, d = 10)
-		(input inClock,
-		 input clock50MHz,
-		 input inReset,
-		 output signal,
-		 output displaySignal);
-		 
-	logic [9:0] currentCount;
-
-	vga_counter #(.N(10)) count1 (
-		.clk(inClock),
-		.reset(cntReset | inReset),
-		.q(currentCount)
-	);
-	
-	vga_comparator #(.N(10)) aTob (
-		.a(currentCount),
-		.b(a),
-		.gte(signal)
-	);
-	
-	vga_comparator #(.N(10)) bToc (
-		.a(currentCount),
-		.b(a + b),
-		.gte(disp1)
-	);
-	
-	vga_comparator #(.N(10)) cToD (
-		.a(currentCount),
-		.b(a + b + c),
-		.lt(disp2)
-	);
-	
-	vga_comparator #(.N(10)) reset (
-		.a(currentCount),
-		.b(a + b + c + d),
-		.eq(compSignal)
-	);
-	
-	vga_synchronizer sync1 (
-		.clk(clock50MHz),
-		.d(compSignal),
-		.q(cntReset)
-	);
-	
-	assign displaySignal = disp1 & disp2;
-
-endmodule
-\end{Verbatim}
-
-\subsubsection{VGA vCounterComp}
-
-\begin{Verbatim}
-module vga_vCounterComp #(parameter a = 10, b = 10, c = 10, d = 10)
+module vga_syncCounterComp #(parameter a = 10, b = 10, c = 10, d = 10)
 		(input inClock,
 		 input clock50MHz,
 		 input inReset,
@@ -1519,37 +1466,12 @@ run
 
 \end{Verbatim}
 
-\subsubsection{VGA hCounterComp}
+\subsubsection{VGA syncCounterComp}
 
 \begin{figure}[H]
     \includegraphics[width=0.8 \linewidth]{images/vgaHCounterCompSim.png}
-    \caption{Simulating inputs to the VGA hCounterComp. For this simulation, the range from 20 to 30 is the display range}
-    \label{vgaHCounterCompSim}
-\end{figure}
-
-Do File:
-
-\begin{Verbatim}
-add wave inClock
-add wave clock50MHz
-add wave inReset
-add wave signal
-add wave displaySignal
-add wave currentCount
-force -drive inClock -r 50 0 0, 1 25
-force -drive clock50MHz -r 10 0 0, 1 5
-force -deposit inReset 1
-run
-force -deposit inReset 0
-run
-\end{Verbatim}
-
-\subsubsection{VGA vCounterComp}
-
-\begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/vgaVCounterCompSim.png}
-    \caption{Simulating inputs to the VGA vCounterComp. For this simulation, the range from 20 to 30 is the display range}
-    \label{vgaVCounterCompSim}
+    \caption{Simulating inputs to the VGA syncCounterComp. For this simulation, the range from 20 to 30 is the display range}
+    \label{vgaSyncCounterCompSim}
 \end{figure}
 
 Do File:
