@@ -70,7 +70,7 @@ The purpose of this project is to create a digital logic design that uses variou
 \section{High Level Descriptions}%%%%%%%%%%%%%%
 
 
-\section{Controller Descriptions}
+\section{Input Device Descriptions}
 
 This section is meant to provide a brief but thorough low-level view of the operations of our chosen input devices. 
 
@@ -98,6 +98,9 @@ The Nintendo Entertainment System (NES) first became available in America in 198
 \end{figure}
 
 An example of the NES controller decoder module was provided for us in the course materials, and a discussion of the code is included in the appendix of this document.
+
+\subsection{Analog-to-Digital Converter}
+The second input that we chose was an Analog-to-Digital Converter, also known as an ADC. After talking to a fellow classmate\footnote{Luke Goldsworthy} about how hard a time he was having accessing the DE10-Lite's Onboard ADC (even with the help of teachers and TAs), we decided to use an external one to interface with the DE10-Lite. An Arduino Nano converts an analog potentiometer's voltage from 0-5Vdc  to 0 to 1023 bits. The code running on the arduino is included in the appendix section. 
 
 \section{HDL Components}
 
@@ -219,6 +222,55 @@ module NesDataReceiverDecoder(
     endcase
 endmodule
 
+\end{Verbatim}
+
+\subsubsection{ADC}
+The following code is written in Arduino C and uploaded to an Arduino Nano microcontroller. 
+
+\begin{Verbatim}[tabsize = 4]
+
+int analogPin = A0;	// the potentiometer's analog voltage
+int d0 = 0;				// the first output bit
+int d1 = 1;
+int d2 = 2;
+int d3 = 3;
+int d4 = 4;
+int d5 = 5;
+int d6 = 6;
+int d7 = 7;
+int d8 = 8;
+int d9 = 9;				// the last (most significant) output bit
+
+void setup() 
+{
+  pinMode(analogPin, INPUT);              // Potentiometer input pin
+  
+  pinMode(d0, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d1, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d2, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d3, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d4, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d5, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d6, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d7, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d8, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d9, OUTPUT);           //Indicates the pinmode of selected pin
+}
+
+void loop() 
+{
+  int value = analogRead(analogPin);
+  int pinArray[10];
+  bool bitArray[10];
+  for (int i=0; i<=9; i++)
+  {
+    pinArray[i] = i;			// assigns outputs 0-9
+    if (bitRead(value,i))
+       {digitalWrite( pinArray[i],HIGH);}
+    else
+       {digitalWrite( pinArray[i],LOW);}
+  }
+}
 \end{Verbatim}
 
 \subsubsection{Square Wave Generator}
