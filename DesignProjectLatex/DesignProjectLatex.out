@@ -4,11 +4,38 @@
 \BOOKMARK [2][-]{subsection.3.1}{NES Controller}{section.3}% 4
 \BOOKMARK [2][-]{subsection.3.2}{Analog-to-Digital Converter}{section.3}% 5
 \BOOKMARK [1][-]{section.4}{HDL Components}{}% 6
-\BOOKMARK [1][-]{section.5}{Appendix}{}% 7
-\BOOKMARK [2][-]{subsection.5.1}{Source Code}{section.5}% 8
-\BOOKMARK [3][-]{subsubsection.5.1.1}{NES Controller Reader}{subsection.5.1}% 9
-\BOOKMARK [3][-]{subsubsection.5.1.2}{ADC}{subsection.5.1}% 10
-\BOOKMARK [3][-]{subsubsection.5.1.3}{Square Wave Generator}{subsection.5.1}% 11
-\BOOKMARK [2][-]{subsection.5.2}{Simulation Results}{section.5}% 12
-\BOOKMARK [3][-]{subsubsection.5.2.1}{NES Controller Reader}{subsection.5.2}% 13
-\BOOKMARK [3][-]{subsubsection.5.2.2}{Square Wave Generator}{subsection.5.2}% 14
+\BOOKMARK [2][-]{subsection.4.1}{Top Module}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{VGA Output}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.2.1}{VGA hCounterComp}{subsection.4.2}% 9
+\BOOKMARK [3][-]{subsubsection.4.2.2}{VGA vCounterComp}{subsection.4.2}% 10
+\BOOKMARK [3][-]{subsubsection.4.2.3}{VGA counter}{subsection.4.2}% 11
+\BOOKMARK [3][-]{subsubsection.4.2.4}{VGA displayMux}{subsection.4.2}% 12
+\BOOKMARK [3][-]{subsubsection.4.2.5}{VGA comparator}{subsection.4.2}% 13
+\BOOKMARK [3][-]{subsubsection.4.2.6}{VGA synchronizer}{subsection.4.2}% 14
+\BOOKMARK [3][-]{subsubsection.4.2.7}{clockDivBy2}{subsection.4.2}% 15
+\BOOKMARK [2][-]{subsection.4.3}{Square Wave Generator}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Hardware}{}% 17
+\BOOKMARK [1][-]{section.6}{Appendix}{}% 18
+\BOOKMARK [2][-]{subsection.6.1}{Source Code}{section.6}% 19
+\BOOKMARK [3][-]{subsubsection.6.1.1}{NES Controller Reader}{subsection.6.1}% 20
+\BOOKMARK [3][-]{subsubsection.6.1.2}{ADC}{subsection.6.1}% 21
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Square Wave Generator}{subsection.6.1}% 22
+\BOOKMARK [3][-]{subsubsection.6.1.4}{VGA Output}{subsection.6.1}% 23
+\BOOKMARK [3][-]{subsubsection.6.1.5}{VGA hCounterComp}{subsection.6.1}% 24
+\BOOKMARK [3][-]{subsubsection.6.1.6}{VGA vCounterComp}{subsection.6.1}% 25
+\BOOKMARK [3][-]{subsubsection.6.1.7}{VGA counter}{subsection.6.1}% 26
+\BOOKMARK [3][-]{subsubsection.6.1.8}{VGA displayMux}{subsection.6.1}% 27
+\BOOKMARK [3][-]{subsubsection.6.1.9}{VGA comparator}{subsection.6.1}% 28
+\BOOKMARK [3][-]{subsubsection.6.1.10}{VGA synchronizer}{subsection.6.1}% 29
+\BOOKMARK [3][-]{subsubsection.6.1.11}{clockDivBy2}{subsection.6.1}% 30
+\BOOKMARK [2][-]{subsection.6.2}{Simulation Results}{section.6}% 31
+\BOOKMARK [3][-]{subsubsection.6.2.1}{NES Controller Reader}{subsection.6.2}% 32
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Square Wave Generator}{subsection.6.2}% 33
+\BOOKMARK [3][-]{subsubsection.6.2.3}{VGA Output}{subsection.6.2}% 34
+\BOOKMARK [3][-]{subsubsection.6.2.4}{VGA hCounterComp}{subsection.6.2}% 35
+\BOOKMARK [3][-]{subsubsection.6.2.5}{VGA vCounterComp}{subsection.6.2}% 36
+\BOOKMARK [3][-]{subsubsection.6.2.6}{VGA counter}{subsection.6.2}% 37
+\BOOKMARK [3][-]{subsubsection.6.2.7}{VGA displayMux}{subsection.6.2}% 38
+\BOOKMARK [3][-]{subsubsection.6.2.8}{VGA comparator}{subsection.6.2}% 39
+\BOOKMARK [3][-]{subsubsection.6.2.9}{VGA synchronizer}{subsection.6.2}% 40
+\BOOKMARK [3][-]{subsubsection.6.2.10}{clockDivBy2}{subsection.6.2}% 41

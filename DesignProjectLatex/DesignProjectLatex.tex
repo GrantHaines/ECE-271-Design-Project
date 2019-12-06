@@ -9,6 +9,13 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{hyperref} %% syntax: \href{run:./file.txt}{File.txt}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,}
+    
 \usepackage{fancyvrb}	
 
 %\usepackage{pdfpages}%to insert pdfs
@@ -22,7 +29,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \makeatletter
 
 %% All below Added by Ben |||||||||||||||||||||||||||||||||||||||||||||||
@@ -101,6 +108,14 @@ An example of the NES controller decoder module was provided for us in the cours
 
 \subsection{Analog-to-Digital Converter}
 The second input that we chose was an Analog-to-Digital Converter, also known as an ADC. After talking to a fellow classmate\footnote{Luke Goldsworthy} about how hard a time he was having accessing the DE10-Lite's on-board ADC (even with the help of teachers and TAs), our group decided to use an external one to interface with the DE10-Lite. An Arduino Nano converts an analog potentiometer's voltage from 0-5Vdc  to 0 to 1023 bits. The code running on the Arduino is included in the appendix section. 
+
+\begin{figure}[H]
+    \includegraphics[width=0.6 \linewidth]{images/nano.jpg}
+    \caption{The Arduino Nano includes a built-in ADC}
+    \label{nano}
+\end{figure}
+
+
 
 \section{HDL Components}
 
@@ -183,9 +198,28 @@ Outputs: A clock signal half as fast as the input clock signal.
 
 Description: This module takes in a clock input and divides its frequency by 2. For example, a 50MHz clock input would become a 25MHz clock input.
 
+\subsection{Square Wave Generator}
+Our square wave generator uses a simple algorithm to take a 10-bit array of data (from the analog input) and convert the value from $0-1023 $ bits to $\approx 100Hz $ to$ \approx 1600 Hz$. This range produces four octaves of the note G (i.e. a range from G2 to G6). This frequency range allows for the selection of many notes within the range of human hearing. 
+
+
+\begin{equation}
+1600/1123 \approx (10/7)
+\end{equation}
+
+The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
+
+\section{Hardware}%%%%%%%%%%%%%%%
+
+DISCUSSSSSSSSSSSSSSSSSSSSSSSS
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/hardwareDiagram.jpg}
+    \caption{ }
+    \label{hardware}
+\end{figure}
+
 \section{Appendix}
 
-\subsection{Source Code}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Source Code}%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{NES Controller Reader}
 The NES reader module depends on four sub-modules. 
@@ -388,23 +422,22 @@ The following code is written in Arduino C and uploaded to an Arduino Nano micro
 \begin{Verbatim}[tabsize = 4]
 
 int analogPin = A0;	// the potentiometer's analog voltage
-int d0 = 0;				// the first output bit
-int d1 = 1;
-int d2 = 2;
+
+int d2 = 2;				// the first output bit
 int d3 = 3;
 int d4 = 4;
 int d5 = 5;
 int d6 = 6;
 int d7 = 7;
 int d8 = 8;
-int d9 = 9;				// the last (most significant) output bit
+int d9 = 9;				
+int d10 = 10;
+int d11 = 11;// the last (most significant) output bit
 
 void setup() 
 {
   pinMode(analogPin, INPUT);              // Potentiometer input pin
   
-  pinMode(d0, OUTPUT);           //Indicates the pinmode of selected pin
-  pinMode(d1, OUTPUT);           //Indicates the pinmode of selected pin
   pinMode(d2, OUTPUT);           //Indicates the pinmode of selected pin
   pinMode(d3, OUTPUT);           //Indicates the pinmode of selected pin
   pinMode(d4, OUTPUT);           //Indicates the pinmode of selected pin
@@ -413,6 +446,8 @@ void setup()
   pinMode(d7, OUTPUT);           //Indicates the pinmode of selected pin
   pinMode(d8, OUTPUT);           //Indicates the pinmode of selected pin
   pinMode(d9, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d10, OUTPUT);           //Indicates the pinmode of selected pin
+  pinMode(d11, OUTPUT);           //Indicates the pinmode of selected pin
 }
 
 void loop() 
@@ -422,11 +457,11 @@ void loop()
   bool bitArray[10];
   for (int i=0; i<=9; i++)
   {
-    pinArray[i] = i;			// assigns outputs 0-9
+    pinArray[i] = i+2;			// assigns outputs 2-11
     if (bitRead(value,i))
-       {digitalWrite( pinArray[i],HIGH);}
+       {digitalWrite( pinArray[i],HIGH);}	//accesses the correct pin and writes HIGH
     else
-       {digitalWrite( pinArray[i],LOW);}
+       {digitalWrite( pinArray[i],LOW);}		//accesses the correct pin and writes LOW
   }
 }
 \end{Verbatim}
@@ -434,38 +469,30 @@ void loop()
 \subsubsection{Square Wave Generator}
 
 \begin{Verbatim}[tabsize=4]
+
 module periodTime(input logic clk,
-					input logic [2:0] data,
+					input logic [9:0] data,
 					output logic q);
 					
 int compareNumber;
 int count;
 
-always_comb
-		case(data)
-			0: compareNumber = 6400;	// just mod input clock until audio spectrum periods
-			1: compareNumber = 3200;	// one octave
-			2: compareNumber = 1600;
-			3: compareNumber = 8000;
-			
-			4: compareNumber = 4000;
-			5: compareNumber = 2000;
-			6: compareNumber = 1000;
-			7: compareNumber = 500;		// consider adding default case
-		endcase
-			
+always_ff @(negedge q)
+	begin
+		compareNumber = (data + 100)*(10/7);
+		if (count >= compareNumber)
+		count <= 0;
+	end
+		
 always_ff @(posedge clk)
 	begin
-		if (count >= compareNumber)	// could modify to not restart notes when changed
-			count <= 0;
-		else 
 			count <= count +1;
 	end
 
 always_comb
 	begin
 			if( count < compareNumber)				
-				q = (count > compareNumber/2); 	//assigns output with initial low
+				q = (count > compareNumber/2); 	//assigns output duty cycle 50% with initial low
 			else 
 				q = 0;
 	end
@@ -807,28 +834,22 @@ Our square wave generator module works by receiving a 3-bit data bus and outputs
 Do File:
 
 \begin{Verbatim}
-add wave clock50MHz
-add wave inReset
-add wave inRed
-add wave inGreen
-add wave inBlue
-add wave hSync
-add wave vSync
-add wave outRed
-add wave outGreen
-add wave outBlue
-add wave redCount
-add wave greenCount
-add wave blueCount
-force -drive clock50MHz -r 4 0 0, 1 2
-force -deposit inReset 0
+
+add wave -position insertpoint sim:/periodTime/*
+force -freeze sim:/periodTime/clk 1 0, 0 {5 ps} -r 10
+force -freeze sim:/periodTime/data 00010101 0
 run
-force -deposit inReset 1
+force -freeze sim:/periodTime/data 0000011111 0
 run
-force -deposit redCount 4'b1100
-force -deposit greenCount 4'b0110
-force -deposit blueCount 4'b0011
+force -freeze sim:/periodTime/data 1111111111 0
 run
+force -freeze sim:/periodTime/data 0000011111 0
+run
+force -freeze sim:/periodTime/data 0000000111 0
+run
+force -freeze sim:/periodTime/data 0000100111 0
+run
+
 \end{Verbatim}
 
 \subsubsection{VGA hCounterComp}
