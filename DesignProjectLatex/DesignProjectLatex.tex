@@ -453,21 +453,25 @@ module vgaOutput
 		 output vSync,
 		 output [3:0] outRed, outGreen, outBlue);
 	
+	logic [3:0] redCount;
+	logic [3:0] greenCount;
+	logic [3:0] blueCount;
+	
 	vga_counter #(.N(4)) redCounter (
 		.clk(inRed),
-		.reset(inReset),
+		.reset(~inReset),
 		.q(redCount)
 	);
 	
 	vga_counter #(.N(4)) greenCounter (
 		.clk(inGreen),
-		.reset(inReset),
+		.reset(~inReset),
 		.q(greenCount)
 	);
 	
 	vga_counter #(.N(4)) blueCounter (
 		.clk(inBlue),
-		.reset(inReset),
+		.reset(~inReset),
 		.q(blueCount)
 	);
 
@@ -477,7 +481,7 @@ module vgaOutput
 		.outClock(clock25MHz)
 	);
 	
-	vga_hCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
+	vga_syncCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
 		.inClock(clock25MHz),
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
@@ -491,7 +495,7 @@ module vgaOutput
 		.outClock(hClock)
 	); 
 	
-	vga_vCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
+	vga_syncCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
 		.inClock(hClock),
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
