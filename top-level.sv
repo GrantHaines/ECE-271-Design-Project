@@ -12,7 +12,7 @@ module top-level
 
 	NesReader NesReader1 (
 		.dataYellow(NESDataYellow),
-		.clock(),
+		.clock(clock50MHz),
 		.reset_n(),
 		.latchOrange(),
 		.clockRed(),

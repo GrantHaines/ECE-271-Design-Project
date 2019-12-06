@@ -1,5 +1,12 @@
+/*
+Inputs: A clock signal and a 1-bit data value.
+Outputs: A 1-bit data value.
 
-module synchronizer
+Description: The synchronizer takes asynchronous
+inputs and syncs them to the clock edge.
+*/
+
+module vga_synchronizer
 		(input logic clk,
 		 input logic d,
 		 output logic q);
