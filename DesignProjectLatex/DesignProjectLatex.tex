@@ -744,6 +744,217 @@ Our square wave generator module works by receiving a 3-bit data bus and outputs
     \label{squareSim}
 \end{figure}
 
+\subsubsection{VGA Output}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaOutputSim.png}
+    \caption{Simulating inputs to the VGA output}
+    \label{vgaOutputSim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave clock50MHz
+add wave inReset
+add wave inRed
+add wave inGreen
+add wave inBlue
+add wave hSync
+add wave vSync
+add wave outRed
+add wave outGreen
+add wave outBlue
+add wave redCount
+add wave greenCount
+add wave blueCount
+force -drive clock50MHz -r 4 0 0, 1 2
+force -deposit inReset 0
+run
+force -deposit inReset 1
+run
+force -deposit redCount 4'b1100
+force -deposit greenCount 4'b0110
+force -deposit blueCount 4'b0011
+run
+\end{Verbatim}
+
+\subsubsection{VGA hCounterComp}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaHCounterCompSim.png}
+    \caption{Simulating inputs to the VGA hCounterComp. For this simulation, the range from 20 to 30 is the display range}
+    \label{vgaHCounterCompSim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave inClock
+add wave clock50MHz
+add wave inReset
+add wave signal
+add wave displaySignal
+add wave currentCount
+force -drive inClock -r 50 0 0, 1 25
+force -drive clock50MHz -r 10 0 0, 1 5
+force -deposit inReset 1
+run
+force -deposit inReset 0
+run
+\end{Verbatim}
+
+\subsubsection{VGA vCounterComp}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaVCounterCompSim.png}
+    \caption{Simulating inputs to the VGA vCounterComp. For this simulation, the range from 20 to 30 is the display range}
+    \label{vgaVCounterCompSim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave inClock
+add wave clock50MHz
+add wave inReset
+add wave signal
+add wave displaySignal
+add wave currentCount
+force -drive inClock -r 50 0 0, 1 25
+force -drive clock50MHz -r 10 0 0, 1 5
+force -deposit inReset 1
+run
+force -deposit inReset 0
+run
+\end{Verbatim}
+
+\subsubsection{VGA counter}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaCounterSim.png}
+    \caption{Simulating inputs to the VGA counter}
+    \label{vgaCounterSim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave clk
+add wave reset
+add wave q
+force -drive clk -r 100 0 0, 1 50
+force -deposit reset 1
+run
+force -deposit reset 0
+run
+\end{Verbatim}
+
+\subsubsection{VGA displayMux}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaDisplayMuxSim.png}
+    \caption{Simulating inputs to the VGA displayMux}
+    \label{vgaDisplayMuxSim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave select
+add wave inRed
+add wave inGreen
+add wave inBlue
+add wave outRed
+add wave outGreen
+add wave outBlue
+force -deposit inRed 4'b0011
+force -deposit inGreen 4'b1010
+force -deposit inBlue 4'b1100
+force -deposit select 0
+run
+force -deposit select 1
+run
+force -deposit select 0
+run
+\end{Verbatim}
+
+\subsubsection{VGA comparator}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaCompSim.png}
+    \caption{Simulating inputs to the VGA comparator}
+    \label{vgaCompSim}
+\end{figure}
+
+Do file:
+
+\begin{Verbatim}
+add wave a
+add wave b
+add wave eq
+add wave neq
+add wave gt
+add wave gte
+add wave lt
+add wave lte
+
+force -deposit a 0
+force -deposit b 0
+run
+force -deposit a 1
+run
+force -deposit b 1
+run
+force -deposit a 0
+run
+force -deposit b 0
+run
+\end{Verbatim}
+
+\subsubsection{VGA synchronizer}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaSyncSim.png}
+    \caption{Simulating inputs to the VGA synchronizer module}
+    \label{vgaSyncSim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave clk
+add wave d
+add wave q
+force -drive clk -r 200 0 0, 1 100
+force -deposit d 0
+run
+force -deposit d 1
+run
+\end{Verbatim}
+
+\subsubsection{clockDivBy2}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clockDivBy2Sim.png}
+    \caption{Simulating inputs to the clockDivBy2 module}
+    \label{clockDivBy2Sim}
+\end{figure}
+
+Do File:
+
+\begin{Verbatim}
+add wave clock50MHz
+add wave inReset
+add wave outClock
+force -drive clock50MHz -r 100 0 0, 1 50
+force -deposit inReset 0
+run
+force -deposit inReset 1
+run
+force -deposit inReset 0
+run
+\end{Verbatim}
 
 %\includepdf[page=-]{Ch3Example}
 
