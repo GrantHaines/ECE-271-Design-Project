@@ -109,7 +109,11 @@ INSERT TOP MODULE DESCRIPTION HERE
 
 \subsection{VGA Output}
 
-INSERT VGA OUTPUT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaOutputDiagram.png}
+    \caption{VGA output module diagram}
+    \label{vgaOutputDiagram}
+\end{figure}
 
 Input: The VGA module takes a 50MHz clock signal, a reset signal, and three button signals for the red, green, and blue inputs.
 
@@ -119,7 +123,11 @@ Description: This module is designed to output a 640x480 resolution VGA signal, 
 
 \subsubsection{VGA syncCounterComp}
 
-INSERT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaSyncCounterCompDiagram.png}
+    \caption{VGA syncCounterComp module diagram}
+    \label{vgaSyncCounterCompDiagram}
+\end{figure}
 
 Inputs: An input clock signal, a 50MHz clock signal, and a reset signal.
 Outputs: The horizontal or vertical sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
@@ -128,7 +136,11 @@ Description: The syncCounterComp creates either the hSync or vSync signal for th
 
 \subsubsection{VGA counter}
 
-INSERT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaCounterDiagram.png}
+    \caption{VGA counter module diagram}
+    \label{vgaCounterDiagram}
+\end{figure}
 
 Inputs: A clock signal and a reset signal.
 Outputs: An N-bit binary value.
@@ -137,7 +149,11 @@ Description: This counter adds one to its output value each rising clock edge.
 
 \subsubsection{VGA displayMux}
 
-INSERT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaDisplayMuxDiagram.png}
+    \caption{VGA displayMux module diagram}
+    \label{vgaDisplayMuxDiagram}
+\end{figure}
 
 Inputs: A select signal and red, green, and blue binary input values.
 Outputs: Either the inputted RGB values or 0 values.
@@ -146,7 +162,11 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 
 \subsubsection{VGA comparator}
 
-INSERT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaComparatorDiagram.png}
+    \caption{VGA comparator module diagram}
+    \label{vgaComparatorDiagram}
+\end{figure}
 
 Inputs: A select signal and red, green, and blue binary input values.
 Outputs: Either the inputted RGB values or 0 values.
@@ -155,7 +175,11 @@ Description: The VGA displayMux decides whether to send the inputted RGB values 
 
 \subsubsection{VGA synchronizer}
 
-INSERT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/vgaSynchronizer.png}
+    \caption{VGA synchronizer module diagram}
+    \label{vgaSynchronizerDiagram}
+\end{figure}
 
 Inputs: A clock signal and a 1-bit data value.
 Outputs: A 1-bit data value.
@@ -164,7 +188,11 @@ Description: The synchronizer takes asynchronous inputs and syncs them to the cl
 
 \subsubsection{clockDivBy2}
 
-INSERT DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/clockDivBy2Diagram.png}
+    \caption{The clockDivBy2 module diagram}
+    \label{clockDivBy2Diagram}
+\end{figure}
 
 Inputs: A clock signal and a reset signal.
 Outputs: A clock signal half as fast as the input clock signal.
