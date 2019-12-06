@@ -14,31 +14,31 @@ module vgaOutput
 		 output vSync,
 		 output [3:0] outRed, outGreen, outBlue);
 	
-	counter #(.N(4)) redCounter (
+	vga_counter #(.N(4)) redCounter (
 		.clk(inRed),
 		.reset(inReset),
 		.q(redCount)
 	);
 	
-	counter #(.N(4)) greenCounter (
+	vga_counter #(.N(4)) greenCounter (
 		.clk(inGreen),
 		.reset(inReset),
 		.q(greenCount)
 	);
 	
-	counter #(.N(4)) blueCounter (
+	vga_counter #(.N(4)) blueCounter (
 		.clk(inBlue),
 		.reset(inReset),
 		.q(blueCount)
 	);
 
-	clockmod clockDivider(
+	clockDivBy2 clockDivider(
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
 		.outClock(clock25MHz)
 	);
 	
-	hCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
+	vga_hCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
 		.inClock(clock25MHz),
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
@@ -46,13 +46,13 @@ module vgaOutput
 		.displaySignal(hSignal)
 	);
 	
-	clockmod syncDivider(
+	clockDivBy2 syncDivider(
 		.clock50MHz(hSync),
 		.inReset(~inReset),
 		.outClock(hClock)
 	); 
 	
-	vCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
+	vga_vCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
 		.inClock(hClock),
 		.clock50MHz(clock50MHz),
 		.inReset(~inReset),
@@ -60,7 +60,7 @@ module vgaOutput
 		.displaySignal(vSignal)
 	);
 	
-	displayMux display (
+	vga_displayMux display (
 		.select(hSignal & vSignal),
 		.inRed(redCount),
 		.inGreen(greenCount),

@@ -101,7 +101,84 @@ An example of the NES controller decoder module was provided for us in the cours
 
 \section{HDL Components}
 
+\subsection{Top Module}
 
+INSERT TOP MODULE DIAGRAM HERE
+
+INSERT TOP MODULE DESCRIPTION HERE
+
+\subsection{VGA Output}
+
+INSERT VGA OUTPUT DIAGRAM HERE
+
+Input: The VGA module takes a 50MHz clock signal, a reset signal, and three button signals for the red, green, and blue inputs.
+
+Output: The VGA module outputs a vSync and an hSync signal, and three 4-bit values for the red, green, and blue display colors.
+
+Description: This module is designed to output a 640x480 resolution VGA signal, allowing it to display an RGB color value on a screen. The hSync signal tells a computer monitor how quickly to update each column of the screen, while the vSync signal tells it how quickly to update each row. The color inputs work by having each button press increment a 4-bit counter that goes to the appropriate color output.
+
+\subsubsection{VGA hCounterComp}
+
+INSERT DIAGRAM HERE
+
+Inputs: A 25MHz clock signal, a 50MHz clock signal, and a reset signal.
+Outputs: The horizontal sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
+
+Description: The hCounterComp creates the hSync signal for the VGA driver, as well as indicating that the signal is within the display area so that the RGB values can be communicated to the screen. The hSync signal travels through the horizontal row of pixels on the screen, displaying color when appropriate.
+
+\subsubsection{VGA vCounterComp}
+
+INSERT DIAGRAM HERE
+
+Inputs: The hSync signal as a clock, a 50MHz clock signal, and a reset signal.
+Outputs: The vertical sync rate for the VGA output and a signal indicating that it is in the display area for the screen.
+
+Description: The vCounterComp module generates the vSync signal for the VGA driver, which tells it when to move on to the next row of pixels, as well as telling it when it is within the displayable area.
+
+\subsubsection{VGA counter}
+
+INSERT DIAGRAM HERE
+
+Inputs: A clock signal and a reset signal.
+Outputs: An N-bit binary value.
+
+Description: This counter adds one to its output value each rising clock edge.
+
+\subsubsection{VGA displayMux}
+
+INSERT DIAGRAM HERE
+
+Inputs: A select signal and red, green, and blue binary input values.
+Outputs: Either the inputted RGB values or 0 values.
+
+Description: The VGA displayMux decides whether to send the inputted RGB values to the screen or not to, depending on whether or not we are within the displayable area, as given by the hSync and vSync modules.
+
+\subsubsection{VGA comparator}
+
+INSERT DIAGRAM HERE
+
+Inputs: A select signal and red, green, and blue binary input values.
+Outputs: Either the inputted RGB values or 0 values.
+
+Description: The VGA displayMux decides whether to send the inputted RGB values to the screen or not to, depending on whether or not we are within the displayable area, as given by the hSync and vSync modules.
+
+\subsubsection{VGA synchronizer}
+
+INSERT DIAGRAM HERE
+
+Inputs: A clock signal and a 1-bit data value.
+Outputs: A 1-bit data value.
+
+Description: The synchronizer takes asynchronous inputs and syncs them to the clock edge.
+
+\subsubsection{clockDivBy2}
+
+INSERT DIAGRAM HERE
+
+Inputs: A clock signal and a reset signal.
+Outputs: A clock signal half as fast as the input clock signal.
+
+Description: This module takes in a clock input and divides its frequency by 2. For example, a 50MHz clock input would become a 25MHz clock input.
 
 \section{Appendix}
 
@@ -116,6 +193,48 @@ Finally, the "NesDataReceiverDecoder" module reads data from the data wire at th
 
 
 \begin{Verbatim}[tabsize = 4]
+module NesReader(
+  input logic dataYellow,
+  input logic clock,
+  input logic reset_n,
+  output logic latchOrange,
+  output logic clockRed,
+  output logic up,
+  output logic down,
+  output logic left,
+  output logic right,
+  output logic start,
+  output logic select,
+  output logic a,
+  output logic b
+  );
+  logic [3:0] count;
+
+  Counter4 matt_i1(
+    .clk               (clock), 
+    .reset_n           (reset_n), 
+    .count             (count)
+  );
+
+  NesClockStateDecoder matt_i2(
+    .controllerState  (count), 
+    .nesClock         (clockRed)
+  );
+
+  NesLatchStateDecoder matt_i3 (
+    .controllerState  (count), 
+    .nesLatch         (latchOrange)
+  );
+
+  NesDataReceiverDecoder matt_i4 (
+    .dataYellow       (dataYellow), 
+    .reset_n           (reset_n),
+    .controllerState  (count), 
+    .readButtons      ({a, b, select, start, up, down, left, right})
+  );
+endmodule
+
+\begin{Verbatim}
 module NesReader(
   input logic dataYellow,
   input logic clock,
@@ -198,6 +317,46 @@ module NesClockStateDecoder(
 endmodule
 
 
+module Counter4(
+  input logic clk, reset_n,
+  output logic [3:0] count);
+
+  always_ff @ (posedge clk, negedge reset_n)
+    if(!reset_n) count <= 4'b0;
+    else count <= count + 1;
+endmodule
+
+
+module NesLatchStateDecoder(
+  input logic [3:0] controllerState,
+  output logic nesLatch);
+
+  always_comb
+    case(controllerState)
+      4'h0: nesLatch = 1;
+      default: nesLatch = 0;
+    endcase
+endmodule
+
+
+module NesClockStateDecoder(
+  input logic [3:0] controllerState,
+  output logic nesClock);
+
+  always_comb
+    case (controllerState)
+      4'h2: nesClock = 1;
+      4'h4: nesClock = 1;
+      4'h6: nesClock = 1;
+      4'h8: nesClock = 1;
+      4'ha: nesClock = 1;
+      4'hC: nesClock = 1;
+      4'hE: nesClock = 1;
+      default: nesClock = 0;
+    endcase
+endmodule
+
+
 module NesDataReceiverDecoder(
   input logic dataYellow,
   input logic reset_n,
@@ -218,7 +377,6 @@ module NesDataReceiverDecoder(
       default: readButtons <= readButtons;
     endcase
 endmodule
-
 \end{Verbatim}
 
 \subsubsection{Square Wave Generator}
@@ -258,6 +416,270 @@ always_comb
 				q = (count > compareNumber/2); 	//assigns output with initial low
 			else 
 				q = 0;
+	end
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA Output}
+
+\begin{Verbatim}
+module vgaOutput
+		(input clock50MHz,
+		 input inReset,
+		 input inRed,
+		 input inGreen,
+		 input inBlue,
+		 output hSync,
+		 output vSync,
+		 output [3:0] outRed, outGreen, outBlue);
+	
+	vga_counter #(.N(4)) redCounter (
+		.clk(inRed),
+		.reset(inReset),
+		.q(redCount)
+	);
+	
+	vga_counter #(.N(4)) greenCounter (
+		.clk(inGreen),
+		.reset(inReset),
+		.q(greenCount)
+	);
+	
+	vga_counter #(.N(4)) blueCounter (
+		.clk(inBlue),
+		.reset(inReset),
+		.q(blueCount)
+	);
+
+	clockDivBy2 clockDivider(
+		.clock50MHz(clock50MHz),
+		.inReset(~inReset),
+		.outClock(clock25MHz)
+	);
+	
+	vga_hCounterComp #(.a(10'd96), .b(10'd48), .c(10'd640), .d(10'd16)) hSyncCounter (
+		.inClock(clock25MHz),
+		.clock50MHz(clock50MHz),
+		.inReset(~inReset),
+		.signal(hSync),
+		.displaySignal(hSignal)
+	);
+	
+	clockDivBy2 syncDivider(
+		.clock50MHz(hSync),
+		.inReset(~inReset),
+		.outClock(hClock)
+	); 
+	
+	vga_vCounterComp #(.a(10'd2), .b(10'd33), .c(10'd480), .d(10'd10)) vSyncCounter (
+		.inClock(hClock),
+		.clock50MHz(clock50MHz),
+		.inReset(~inReset),
+		.signal(vSync),
+		.displaySignal(vSignal)
+	);
+	
+	vga_displayMux display (
+		.select(hSignal & vSignal),
+		.inRed(redCount),
+		.inGreen(greenCount),
+		.inBlue(blueCount),
+		.outRed(outRed),
+		.outGreen(outGreen),
+		.outBlue(outBlue)
+	);
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA hCounterComp}
+
+\begin{Verbatim}
+module vga_hCounterComp #(parameter a = 10, b = 10, c = 10, d = 10)
+		(input inClock,
+		 input clock50MHz,
+		 input inReset,
+		 output signal,
+		 output displaySignal);
+		 
+	logic [9:0] currentCount;
+
+	vga_counter #(.N(10)) count1 (
+		.clk(inClock),
+		.reset(cntReset | inReset),
+		.q(currentCount)
+	);
+	
+	vga_comparator #(.N(10)) aTob (
+		.a(currentCount),
+		.b(a),
+		.gte(signal)
+	);
+	
+	vga_comparator #(.N(10)) bToc (
+		.a(currentCount),
+		.b(a + b),
+		.gte(disp1)
+	);
+	
+	vga_comparator #(.N(10)) cToD (
+		.a(currentCount),
+		.b(a + b + c),
+		.lt(disp2)
+	);
+	
+	vga_comparator #(.N(10)) reset (
+		.a(currentCount),
+		.b(a + b + c + d),
+		.eq(compSignal)
+	);
+	
+	vga_synchronizer sync1 (
+		.clk(clock50MHz),
+		.d(compSignal),
+		.q(cntReset)
+	);
+	
+	assign displaySignal = disp1 & disp2;
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA vCounterComp}
+
+\begin{Verbatim}
+module vga_vCounterComp #(parameter a = 10, b = 10, c = 10, d = 10)
+		(input inClock,
+		 input clock50MHz,
+		 input inReset,
+		 output signal,
+		 output displaySignal);
+		 
+	logic [9:0] currentCount;
+
+	vga_counter #(.N(10)) count1 (
+		.clk(inClock),
+		.reset(cntReset | inReset),
+		.q(currentCount)
+	);
+	
+	vga_comparator #(.N(10)) aTob (
+		.a(currentCount),
+		.b(a),
+		.gte(signal)
+	);
+	
+	vga_comparator #(.N(10)) bToc (
+		.a(currentCount),
+		.b(a + b),
+		.gte(disp1)
+	);
+	
+	vga_comparator #(.N(10)) cToD (
+		.a(currentCount),
+		.b(a + b + c),
+		.lt(disp2)
+	);
+	
+	vga_comparator #(.N(10)) reset (
+		.a(currentCount),
+		.b(a + b + c + d),
+		.eq(compSignal)
+	);
+	
+	vga_synchronizer sync1 (
+		.clk(clock50MHz),
+		.d(compSignal),
+		.q(cntReset)
+	);
+	
+	assign displaySignal = disp1 & disp2;
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA counter}
+
+\begin{Verbatim}
+module vga_counter #(parameter N = 4)
+		(input logic clk,
+		 input logic reset,
+		 output logic [N-1:0] q);
+
+	always_ff @(posedge clk, posedge reset) begin
+		if (reset)	q <= 0;
+		else			q <= q + 1;
+	end
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA displayMux}
+
+\begin{Verbatim}
+module vga_counter #(parameter N = 4)
+		(input logic clk,
+		 input logic reset,
+		 output logic [N-1:0] q);
+
+	always_ff @(posedge clk, posedge reset) begin
+		if (reset)	q <= 0;
+		else			q <= q + 1;
+	end
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA comparator}
+
+\begin{Verbatim}
+module vga_comparator #(parameter N = 1)
+		(input logic [N-1:0] a, b,
+		 output logic eq, neq, lt, lte, gt, gte);
+
+	assign eq	= (a == b);
+	assign neq	= (a != b);
+	assign lt	= (a < b);
+	assign lte	= (a <= b);
+	assign gt	= (a > b);
+	assign gte	= (a >= b);
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{VGA synchronizer}
+
+\begin{Verbatim}
+module vga_synchronizer
+		(input logic clk,
+		 input logic d,
+		 output logic q);
+
+	logic n1;
+	
+	always_ff @(posedge clk)
+		begin
+			n1 <= d;
+			q <= n1;
+		end
+
+endmodule
+\end{Verbatim}
+
+\subsubsection{clockDivBy2}
+
+\begin{Verbatim}
+module clockDivBy2
+	(input clock50MHz,
+	 input inReset,
+	 output reg outClock);
+
+	always @(posedge clock50MHz) begin
+		if (inReset)
+			  outClock <= 1'b0;
+		else
+			  outClock <= ~outClock;
 	end
 
 endmodule
