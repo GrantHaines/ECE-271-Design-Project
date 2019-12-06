@@ -8,7 +8,7 @@ module topLevel
 		(input clock50MHz,
 		 input NESDataYellow,
 		 output vgaHsync, vgaVsync,
-		 output vgaOutRed, vgaOutGreen, vgaOutBlue);
+		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue);
 		 
 	clockDivBy2 clockDiv1 (
 		.clock50MHz(clock50MHz),
