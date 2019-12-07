@@ -32,6 +32,7 @@
 %\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \makeatletter
 
+
 %% All below Added by Ben |||||||||||||||||||||||||||||||||||||||||||||||
 \g@addto@macro\@floatboxreset\centering
 \makeatother				% this and above automatically center figures
@@ -285,8 +286,8 @@ Our square wave generator uses a simple algorithm to take a 10-bit array of data
 The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
 
 \subsection{Seven Segment Display}
-Inputs: The seven segment display module (clock\_ driver.sv) has an input for a 50 MHz clock signal, a reset, an enable, and start, left, right, up, down input signals from the NES controller.
-Outputs: The clock\_ driver module has 6 7-bit outputs to connect to the seven segment display on the De10-Lite.
+Inputs: The seven segment display module (clockdriver.sv) has an input for a 50 MHz clock signal, a reset, an enable, and start, left, right, up, down input signals from the NES controller.
+Outputs: The clock driver module has 6 7-bit outputs to connect to the seven segment display on the De10-Lite.
 
 Description: This module is designed to have a working (and settable) 12 hour clock. If the user presses start they will be able to set the clock to any value. While setting the clock the user can navigate between seconds, minutes and hours. When a user is editing one of these states, the two corresponding seven segment displays will flash. When the user presses start again the time specified will start counting, as a clock should. The value that represents the hours on the clock will be a value between 0 and 11, but the displayed value for hours will be incremented by 1 in order to have the hours fall between 1 and 12.
 
