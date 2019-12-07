@@ -62,7 +62,7 @@ module topLevel
 		.Seg6(Seg6)
 	);
 
-	periodTime SqTop(
+	SquareWave SqTop(
 		.clk(clock50MHz),
 		.data(ADCdata),
 		.q(AudioPin)

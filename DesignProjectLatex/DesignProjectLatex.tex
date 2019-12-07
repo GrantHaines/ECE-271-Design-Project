@@ -128,6 +128,20 @@ Description: The NES controller, analog-to-digital converter (the Arduino Nano),
     \label{gpioPins}
 \end{figure}
 
+\subsection{Top-Level HDL Schematic}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/topLevelDiagram.JPG}
+    \caption{The top-level diagram of our HDL code}
+    \label{topLevelSchematic}
+\end{figure}
+
+Input: The NES data stream (NESDataYellow), the switch to change between the VGA output and clock display (outputSwitch), the FPGA's 50Mhz clock, and the audio controller data (ADCData).
+
+Output: The latch and clock for the NES (NESLatchOrange and NESClockRed), the VGA outputs (vgaHSync, vgaVSync, vgaOutRed, vgaOutGreen, and vgaOutBlue), the seven-segment display outputs (Seg0 through Seg6), and the audio output (audioOut).
+
+Description: The top-level of our HDL design takes our input data from the NES controller and analog-to-digital converter and sends them to their drivers (NESReader and periodTime). The NES reader processes the data stream and sends back the latch and clock information to the NES controller, and outputs data bits indicating which buttons are being pushed at the current moment. These button outputs are sent to the vgaOutput and clock driver modules, which use that to create their outputs. The outputSwitch input enables only one of the two outputs at once.
+
 \section{Input Device Descriptions}
 
 This section is meant to provide a brief but thorough low-level view of the operations of our chosen input devices. 
@@ -217,9 +231,17 @@ The second input that we chose was an Analog-to-Digital Converter, also known as
 
 \subsection{Top Module}
 
-INSERT TOP MODULE DIAGRAM HERE
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/topLevelDiagram.JPG}
+    \caption{The top-level diagram of our HDL code}
+    \label{topLevelSchematic}
+\end{figure}
 
-INSERT TOP MODULE DESCRIPTION HERE
+Input: The NES data stream (NESDataYellow), the switch to change between the VGA output and clock display (outputSwitch), the FPGA's 50Mhz clock, and the audio controller data (ADCData).
+
+Output: The latch and clock for the NES (NESLatchOrange and NESClockRed), the VGA outputs (vgaHSync, vgaVSync, vgaOutRed, vgaOutGreen, and vgaOutBlue), the seven-segment display outputs (Seg0 through Seg6), and the audio output (audioOut).
+
+Description: The top-level of our HDL design takes our input data from the NES controller and analog-to-digital converter and sends them to their drivers (NESReader and periodTime). The NES reader processes the data stream and sends back the latch and clock information to the NES controller, and outputs data bits indicating which buttons are being pushed at the current moment. These button outputs are sent to the vgaOutput and clock driver modules, which use that to create their outputs. The outputSwitch input enables only one of the two outputs at once.
 
 \subsection{VGA Output}
 
@@ -482,6 +504,77 @@ Description: This output is a counter that permits the user to count down or up.
 
 \subsection{Source Code}%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{Top Level Module}
+
+\begin{Verbatim}
+module topLevel
+		(input clock50MHz,
+		 input NESDataYellow,
+		 input [9:0] ADCdata,
+		 input outputSwitch,
+		 output audioOut,
+		 output NESLatchOrange, NESClockRed,
+		 output vgaHsync, vgaVsync,
+		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue
+		 output [6:0] Seg0, Seg1, Seg2, Seg3, Seg4, Seg5);
+		 
+	NesReader NesReader1 (
+		.dataYellow(NESDataYellow),
+		.clock(clock50MHz),
+		.reset_n(1),
+		.latchOrange(NESLatchOrange),
+		.clockRed(NESClockRed),
+		.up(NESUp),
+		.down(NESDown),
+		.left(NESLeft),
+		.right(NESRight),
+		.start(NESStart),
+		.select(NESSelect),
+		.a(NESA),
+		.b(NESB)
+	);
+
+	vgaOutput vgaOutput1 (
+		.clock50MHz(clock50MHz),
+		.inReset(NESStart | outputSwitch),
+		.inRed(NESUp),
+		.inGreen(NESLeft),
+		.inBlue(NESRight),
+		.hSync(vgaVsync),
+		.vSync(vgaHsync),
+		.outRed(vgaOutRed),
+		.outGreen(vgaOutGreen),
+		.outBlue(vgaOutBlue)
+	);
+
+	clock_driver clock (
+		.clk_50MHz(clock50MHz),
+		.reset(NESSelect),
+		.en(outputSwitch),
+		.start(NESStart),
+		.up(NESUp),
+		.down(NESDown),
+		.right(NESRight),
+		.left(NESLeft),
+		.Seg0(Seg0),
+		.Seg1(Seg1),
+		.Seg2(Seg2),
+		.Seg3(Seg3),
+		.Seg4(Seg4),
+		.Seg5(Seg5),
+		.Seg6(Seg6)
+	);
+
+	SquareWave SqTop(
+		.clk(clock50MHz),
+		.data(ADCdata),
+		.q(AudioPin)
+	);
+
+
+endmodule
+\end{Verbatim}
+
 \subsubsection{NES Controller Reader}
 The NES reader module depends on four sub-modules. 
 The "Counter4" module is just a resettable four-bit counter.
@@ -732,25 +825,30 @@ void loop()
 \subsubsection{Square Wave Generator}
 
 \begin{Verbatim}[tabsize=4]
-
-module periodTime(input logic clk,
+module SquareWave(input logic clk,
 					input logic [9:0] data,
 					output logic q);
 					
 int compareNumber;
 int count;
+logic posFlag;
 
 always_ff @(negedge q)
 	begin
 		compareNumber = (data + 100)*(10/7);
 		if (count >= compareNumber)
-		count <= 0;
+			posFlag = 1;
+		else 
+			posFlag = 0; 		// general syntax for resetting count outside of reg?
 	end
 		
 always_ff @(posedge clk)
-	begin
-			count <= count +1;
-	end
+begin
+	if (posFlag == 1)
+		count<= 0;				//
+	else
+		count <= count +1;
+end
 
 always_comb
 	begin
@@ -1113,7 +1211,7 @@ module clock_driver(input logic clk_50MHz,
 	assign Seg5 =  (h_en & clk_2Hz) ? 1 : h_seg_tens; 
 	 
 
-endmodule 
+endmodule
 \end{Verbatim}
 
 \subsubsection{Seven Segment Display: clock}
