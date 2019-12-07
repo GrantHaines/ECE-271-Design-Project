@@ -102,7 +102,31 @@ Input: This design reads input from an NES controller and an analog-to-digital c
 
 Output: The design outputs to a VGA-capable monitor, an audio speaker, and the FPGA's seven-segment display.
 
-Description:
+Description: The NES controller, analog-to-digital converter (the Arduino Nano), the audio speaker, the VGA monitor, and the seven-segment display are all connected to the FPGA. The pin assignments for the design can be found in Figures \ref{vgaPins}, \ref{7segPins1}, \ref{7segPins2}, and \ref{gpioPins}.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/VGApins.png}
+    \caption{Table of pins used for the VGA.}
+    \label{vgaPins}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/SevenSeg1.png}
+    \caption{Table of pins used for the seven-segment display.}
+    \label{7segPins1}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/SevenSeg2.png}
+    \caption{Table of more pins used for the seven-segment display.}
+    \label{7segPins2}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/VGApins.png}
+    \caption{Table of pins used for the NES controller (0-2), the analog-to-digital converter (3-12), and the audio speaker (13).}
+    \label{gpioPins}
+\end{figure}
 
 \section{Input Device Descriptions}
 
@@ -131,7 +155,52 @@ The Nintendo Entertainment System (NES) first became available in America in 198
     \label{nesClock}
 \end{figure}
 
-An example of the NES controller decoder module was provided for us in the course materials, and a discussion of the code is included in the appendix of this document.
+An example of the NES controller decoder module was provided for us in the course materials. This module works by implementing four sub-modules: a four bit counter that acts as a clock, a clock state decoder, a latch state decoder, and a data decoder as seen in figure \ref{nestop}.  
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/NESreadertop.JPG}
+    \caption{NES reader Top Level}
+    \label{nestop}
+\end{figure}
+
+\subsubsection{Four Bit Counter}
+
+The four bit counter module adds one to a four bit register on every clock cycle. It is resettable.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/NEScounter.JPG}
+    \caption{NES counter}
+    \label{nestop}
+\end{figure}
+
+\subsubsection{Clock State Decoder}
+
+This module basically just outputs TRUE when the input from the 4 bit counter is even.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/NESclockdecoder.JPG}
+    \caption{NES clock state decoder}
+    \label{nesdecoder}
+\end{figure}
+
+\subsubsection{Latch State Decoder}
+The Latch clock just outputs true when the 4-bit counter is 0001.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/LatchMod.JPG}
+    \caption{Latch clock}
+    \label{Latchclock}
+\end{figure}
+
+\subsubsection{Data Decoder}
+
+The NES data decoder receives the 4-bit clock, reset, and data pins that are input to the NES reader module. A decoder outputs odd clock signals (1,3,5...) to the enable pins of the 8 bit register (0,1,2...), causeing the registers to read the data line at the middle of each NES clock cycle. These register values are output until a different value overwrites them, or the reset input is triggered. 
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/NESDataDecoder.JPG}
+    \caption{NES Data Decoder module}
+    \label{DataDecoder}
+\end{figure}
 
 \subsection{Analog-to-Digital Converter}
 The second input that we chose was an Analog-to-Digital Converter, also known as an ADC. After talking to a fellow classmate\footnote{Luke Goldsworthy} about how hard a time he was having accessing the DE10-Lite's on-board ADC (even with the help of teachers and TAs), our group decided to use an external one to interface with the DE10-Lite. An Arduino Nano converts an analog potentiometer's voltage from 0-5Vdc  to 0 to 1023 bits. The code running on the Arduino is included in the appendix section. 
@@ -259,13 +328,22 @@ Our square wave generator uses a simple algorithm to take a 10-bit array of data
 1600/1123 \approx (10/7)
 \end{equation}
 
+If the square wave module abruptly changes in between full cycles, the output would have a "click" of high frequency most times that the signal changed. To prevent this, the variable containing the period amount only updates at the falling edge of the module's output. This is represented by the module on the bottom of Figure \ref{sqwave}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/sqwave.JPG}
+    \caption{The square wave generator module}
+    \label{sqwave}
+\end{figure}
+
 The square wave generator's audio output is sent to a simple audio amplifier circuit (Seen in figure \ref{hardware} based on \href{https://www.instructables.com/id/Tales-From-the-Chip-LM386-Audio-Amplifier/}{this circuit} ), protecting the FPGAs output pins and providing more voltage. The amplifier then drives a simple 8$\Omega$ speaker. 
 
 \subsection{Seven Segment Display}
 Inputs: The seven segment display module (clockdriver.sv) has an input for a 50 MHz clock signal, a reset, an enable, and start, left, right, up, down input signals from the NES controller.
 Outputs: The clock driver module has 6 7-bit outputs to connect to the seven segment display on the De10-Lite.
 
-Description: This module is designed to have a working (and settable) 12 hour clock. If the user presses start they will be able to set the clock to any value. While setting the clock the user can navigate between seconds, minutes and hours. When a user is editing one of these states, the two corresponding seven segment displays will flash. When the user presses start again the time specified will start counting, as a clock should. The value that represents the hours on the clock will be a value between 0 and 11, but the displayed value for hours will be incremented by 1 in order to have the hours fall between 1 and 12.
+Description: This module is designed to have a working (and settable) 12 hour clock. If the user presses start they will be able to set the clock to any value. While setting the clock the user can navigate between seconds, minutes and hours. When a user is editing one of these states, the two corresponding seven segment displays will flash. When the user presses start again the time specified will start counting, as a clock should. The value that represents the hours on the clock will be a value between 0 and 11, but the displayed value for hours will be incremented by 1 in order to have the hours fall between 1 and 12. 
+
 
 \subsubsection{Seven Segment Display: clock}
 \begin{figure}[H]
