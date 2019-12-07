@@ -502,6 +502,22 @@ Description: This output is a counter that permits the user to count down or up.
 
 \section{Appendix}
 
+\subsection{Design Synthesis and Analysis}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/synthesisSummary.png}
+    \caption{Summary of the synthesis and analysis of our design.}
+    \label{synthesisSummary}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{images/synthesisRTL.png}
+    \caption{RTL Netlist view of our design, showing the pins used and top-level modules.}
+    \label{synthesisRTL}
+\end{figure}
+
+We assigned pins and synthesized the design using Quartus, the results of which can be seen in Figures \ref{synthesisSummary} and \ref{synthesisRTL}. The design used 1\% of the FPGA's logic elements and 20\% of its pins.
+
 \subsection{Source Code}%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Top Level Module}
