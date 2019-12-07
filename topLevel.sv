@@ -10,21 +10,17 @@ module topLevel
 		 input [9:0] ADCdata,
                  input outputSwitch,
 		 output audioOut,
+                 output NESLatchOrange, NESClockRed,
 		 output vgaHsync, vgaVsync,
 		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue
                  output [6:0] Seg0, Seg1, Seg2, Seg3, Seg4, Seg5);
 		 
-	clockDivBy2 clockDiv1 (
-		.clock50MHz(clock50MHz),
-		.outClock(clock25MHz)
-	);
-
 	NesReader NesReader1 (
 		.dataYellow(NESDataYellow),
 		.clock(clock50MHz),
-		.reset_n(),
-		.latchOrange(),
-		.clockRed(clock25MHz),
+		.reset_n(1),
+		.latchOrange(NESLatchOrange),
+		.clockRed(NESClockRed),
 		.up(NESUp),
 		.down(NESDown),
 		.left(NESLeft),
