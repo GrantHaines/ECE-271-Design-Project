@@ -36,6 +36,8 @@
 \g@addto@macro\@floatboxreset\centering
 \makeatother				% this and above automatically center figures
 
+\usepackage{parskip}
+
 % Alphabetized list macro from:  https://tex.stackexchange.com/questions/121489/alphabetically-display-the-items-in-itemize
 \usepackage{datatool}% http://ctan.org/pkg/datatool
 \newcommand{\sortitem}[1]{%
@@ -69,13 +71,37 @@
 
 \tableofcontents
 
+\pagebreak
+
 \section{Introduction}
 
-The purpose of this project is to create a digital logic design that uses various parallel input modules with various output modules for implementation on an Field Programmable Gate Array- or FPGA. FPGA programming and design allows smaller digital logic modules to be implemented all on the same board. This paper discusses a number of input and output modules and an easily implementable top-level example design that ties all of these modules together. 
+The purpose of this project is to design and implement digital logic design on the DE10-Lite FPGA connecting multiple inputs, including an NES controller and an analog-to-digital converter, to multiple outputs, including a square audio wave, a color VGA output, and a clock going to a seven-segment display. The audio wave is controlled by the analog-to-digital converter, while a switch on the FPGA toggles the NES controller between controlling the clock display and color VGA output (connected to a computer monitor).
 
+This paper discusses the high-level design of this project, and contains HDL code and recorded simulations in the Appendix. Information about the synthesis and analysis of the project can also be found in the Appendix.
+
+\subsection{Project Deliverables}
+
+\begin{itemize}
+	\item Accepts inputs from an analog-to-digital converter and an NES controller.
+	\item These inputs drive output in the form of an audio square wave, a VGA color output, and a seven-segment clock display.
+	\item The NES controller can be used to control either the VGA output and the clock display, by means of a switch on the FPGA, while the analog-to-digital input always controls the audio wave.
+\end{itemize}
 
 \section{High Level Descriptions}%%%%%%%%%%%%%%
 
+\subsection{Top-Level Hardware Description}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/hardwareDiagram.jpg}
+    \caption{Diagram of top-level hardware}
+    \label{hardware}
+\end{figure}
+
+Input: This design reads input from an NES controller and an analog-to-digital converter, as well as a single switch and the 50MHz clock on the FPGA.
+
+Output: The design outputs to a VGA-capable monitor, an audio speaker, and the FPGA's seven-segment display.
+
+Description:
 
 \section{Input Device Descriptions}
 
@@ -372,15 +398,6 @@ Inputs: The updowncounter has seven inputs, cap, init, up, down, reset, en and a
 Outputs: This module has one output, which is the current count stored in the register.
 
 Description: This output is a counter that permits the user to count down or up. It is used to edit the clock values and will overflow both ways.
-
-\section{Hardware}%%%%%%%%%%%%%%%
-
-DISCUSSSSSSSSSSSSSSSSSSSSSSSS
-\begin{figure}[H]
-    \includegraphics[width=0.8 \linewidth]{images/hardwareDiagram.jpg}
-    \caption{ }
-    \label{hardware}
-\end{figure}
 
 \section{Appendix}
 
