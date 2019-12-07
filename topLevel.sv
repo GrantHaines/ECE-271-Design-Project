@@ -8,9 +8,11 @@ module topLevel
 		(input clock50MHz,
 		 input NESDataYellow,
 		 input [9:0] ADCdata,
+                 input outputSwitch,
 		 output audioOut,
 		 output vgaHsync, vgaVsync,
-		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue);
+		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue
+                 output [6:0] Seg0, Seg1, Seg2, Seg3, Seg4, Seg5);
 		 
 	clockDivBy2 clockDiv1 (
 		.clock50MHz(clock50MHz),
@@ -35,7 +37,7 @@ module topLevel
 
 	vgaOutput vgaOutput1 (
 		.clock50MHz(clock50MHz),
-		.inReset(NESStart),
+		.inReset(NESStart | outputSwitch),
 		.inRed(NESUp),
 		.inGreen(NESLeft),
 		.inBlue(NESRight),
@@ -45,6 +47,17 @@ module topLevel
 		.outGreen(vgaOutGreen),
 		.outBlue(vgaOutBlue)
 	);
+
+        clock_driver clock (
+                .clk_50MHz(clock50MHz),
+                .reset(NESSelect),
+                .en(outputSwitch),
+                .start(NESStart),
+                .up(NESUp),
+                .down(NESDown),
+                .right(NESRight),
+                .left(NESLeft)
+        );
 
 	periodTime SqTop(
 		.clk(clock50MHz),
