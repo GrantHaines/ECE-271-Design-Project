@@ -101,7 +101,31 @@ Input: This design reads input from an NES controller and an analog-to-digital c
 
 Output: The design outputs to a VGA-capable monitor, an audio speaker, and the FPGA's seven-segment display.
 
-Description:
+Description: The NES controller, analog-to-digital converter (the Arduino Nano), the audio speaker, the VGA monitor, and the seven-segment display are all connected to the FPGA. The pin assignments for the design can be found in Figures \ref{vgaPins}, \ref{7segPins1}, \ref{7segPins2}, and \ref{gpioPins}.
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/VGApins.png}
+    \caption{Table of pins used for the VGA.}
+    \label{vgaPins}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/SevenSeg1.png}
+    \caption{Table of pins used for the seven-segment display.}
+    \label{7segPins1}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/SevenSeg2.png}
+    \caption{Table of more pins used for the seven-segment display.}
+    \label{7segPins2}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8 \linewidth]{images/VGApins.png}
+    \caption{Table of pins used for the NES controller (0-2), the analog-to-digital converter (3-12), and the audio speaker (13).}
+    \label{gpioPins}
+\end{figure}
 
 \section{Input Device Descriptions}
 
