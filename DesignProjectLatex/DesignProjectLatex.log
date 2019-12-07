@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.2)  6 DEC 2019 12:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.2)  6 DEC 2019 17:28
 entering extended mode
 **./DesignProjectLatex.tex
 (DesignProjectLatex.tex
@@ -776,7 +776,11 @@ Package: fp-eval 1995/04/03
 \dtl@entrycr=\count181
 \dtl@omitlines=\count182
 )
-(DesignProjectLatex.aux)
+(DesignProjectLatex.aux
+
+LaTeX Warning: Label `nestop' multiply defined.
+
+)
 \openout1 = `DesignProjectLatex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
@@ -795,7 +799,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/ucs\ucsencs.def"
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
-) ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
+)
+("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count183
 \scratchdimen=\dimen186
@@ -893,326 +898,359 @@ loading the todonotes package. on input line 65.
 \tf@toc=\write7
 \openout7 = `DesignProjectLatex.toc'.
 
-<images/NEScontroller.jpg, id=433, 1026.83624pt x 745.78625pt>
+<images/NEScontroller.jpg, id=453, 1026.83624pt x 745.78625pt>
 File: images/NEScontroller.jpg Graphic file (type jpg)
 <use images/NEScontroller.jpg>
 Package pdftex.def Info: images/NEScontroller.jpg  used on input line 89.
 (pdftex.def)             Requested size: 256.07741pt x 185.9909pt.
  [3]
-<images/nesSchema.png, id=442, 1290.8225pt x 714.67pt>
+<images/nesSchema.png, id=462, 1290.8225pt x 714.67pt>
 File: images/nesSchema.png Graphic file (type png)
 <use images/nesSchema.png>
 Package pdftex.def Info: images/nesSchema.png  used on input line 95.
 (pdftex.def)             Requested size: 341.43437pt x 189.03767pt.
-<images/nesclock.jpg, id=444, 469.755pt x 161.10187pt>
+<images/nesclock.jpg, id=464, 469.755pt x 161.10187pt>
 File: images/nesclock.jpg Graphic file (type jpg)
 <use images/nesclock.jpg>
 Package pdftex.def Info: images/nesclock.jpg  used on input line 102.
 (pdftex.def)             Requested size: 341.43437pt x 117.09453pt.
+<images/NESreadertop.JPG, id=466, 908.39375pt x 241.90375pt>
+File: images/NESreadertop.JPG Graphic file (type jpg)
+<use images/NESreadertop.JPG>
+Package pdftex.def Info: images/NESreadertop.JPG  used on input line 110.
+(pdftex.def)             Requested size: 341.43437pt x 90.92407pt.
  [4 <./images/NEScontroller.jpg> <./images/nesSchema.png> <./images/nesclock.jp
 g>]
-<images/nano.jpg, id=451, 1003.75pt x 1003.75pt>
+<images/NEScounter.JPG, id=473, 797.98125pt x 299.1175pt>
+File: images/NEScounter.JPG Graphic file (type jpg)
+<use images/NEScounter.JPG>
+Package pdftex.def Info: images/NEScounter.JPG  used on input line 120.
+(pdftex.def)             Requested size: 341.43437pt x 127.9836pt.
+<images/NESclockdecoder.JPG, id=474, 708.6475pt x 226.8475pt>
+File: images/NESclockdecoder.JPG Graphic file (type jpg)
+<use images/NESclockdecoder.JPG>
+Package pdftex.def Info: images/NESclockdecoder.JPG  used on input line 130.
+(pdftex.def)             Requested size: 341.43437pt x 109.29745pt.
+<images/LatchMod.JPG, id=475, 497.86pt x 61.22874pt>
+File: images/LatchMod.JPG Graphic file (type jpg)
+<use images/LatchMod.JPG>
+Package pdftex.def Info: images/LatchMod.JPG  used on input line 139.
+(pdftex.def)             Requested size: 341.43437pt x 41.99187pt.
+<images/NESDataDecoder.JPG, id=476, 720.6925pt x 350.30875pt>
+File: images/NESDataDecoder.JPG Graphic file (type jpg)
+<use images/NESDataDecoder.JPG>
+Package pdftex.def Info: images/NESDataDecoder.JPG  used on input line 149.
+(pdftex.def)             Requested size: 341.43437pt x 165.96007pt.
+ [5 <./images/NESreadertop.JPG> <./images/NEScounter.JPG> <./images/NESclockdec
+oder.JPG> <./images/LatchMod.JPG>]
+<images/nano.jpg, id=485, 1003.75pt x 1003.75pt>
 File: images/nano.jpg Graphic file (type jpg)
 <use images/nano.jpg>
-Package pdftex.def Info: images/nano.jpg  used on input line 113.
+Package pdftex.def Info: images/nano.jpg  used on input line 158.
 (pdftex.def)             Requested size: 256.07741pt x 256.08305pt.
-<images/vgaOutput.JPG, id=452, 888.31876pt x 612.03656pt>
+ [6 <./images/NESDataDecoder.JPG> <./images/nano.jpg>]
+<images/vgaOutput.JPG, id=496, 888.31876pt x 612.03656pt>
 File: images/vgaOutput.JPG Graphic file (type jpg)
 <use images/vgaOutput.JPG>
-Package pdftex.def Info: images/vgaOutput.JPG  used on input line 131.
+Package pdftex.def Info: images/vgaOutput.JPG  used on input line 176.
 (pdftex.def)             Requested size: 341.43437pt x 235.2379pt.
- [5 <./images/nano.jpg>]
-<images/vgasyncCounterComp.JPG, id=462, 730.22812pt x 578.16pt>
+<images/vgasyncCounterComp.JPG, id=497, 730.22812pt x 578.16pt>
 File: images/vgasyncCounterComp.JPG Graphic file (type jpg)
 <use images/vgasyncCounterComp.JPG>
-Package pdftex.def Info: images/vgasyncCounterComp.JPG  used on input line 152.
+Package pdftex.def Info: images/vgasyncCounterComp.JPG  used on input line 197.
 
 (pdftex.def)             Requested size: 341.43437pt x 270.33253pt.
- [6 <./images/vgaOutput.JPG>]
-<images/vgacounter.JPG, id=468, 621.82312pt x 361.35pt>
+ [7 <./images/vgaOutput.JPG>]
+<images/vgacounter.JPG, id=504, 621.82312pt x 361.35pt>
 File: images/vgacounter.JPG Graphic file (type jpg)
 <use images/vgacounter.JPG>
-Package pdftex.def Info: images/vgacounter.JPG  used on input line 169.
+Package pdftex.def Info: images/vgacounter.JPG  used on input line 214.
 (pdftex.def)             Requested size: 341.43437pt x 198.4123pt.
- [7 <./images/vgasyncCounterComp.JPG> <./images/vgacounter.JPG>]
-<images/vgadisplayMux.JPG, id=476, 773.13844pt x 523.20468pt>
+
+[8 <./images/vgasyncCounterComp.JPG> <./images/vgacounter.JPG>]
+<images/vgadisplayMux.JPG, id=511, 773.13844pt x 523.20468pt>
 File: images/vgadisplayMux.JPG Graphic file (type jpg)
 <use images/vgadisplayMux.JPG>
-Package pdftex.def Info: images/vgadisplayMux.JPG  used on input line 182.
+Package pdftex.def Info: images/vgadisplayMux.JPG  used on input line 227.
 (pdftex.def)             Requested size: 341.43437pt x 231.057pt.
-<images/vgacomparator.JPG, id=477, 565.36218pt x 456.20438pt>
+<images/vgacomparator.JPG, id=512, 565.36218pt x 456.20438pt>
 File: images/vgacomparator.JPG Graphic file (type jpg)
 <use images/vgacomparator.JPG>
-Package pdftex.def Info: images/vgacomparator.JPG  used on input line 195.
+Package pdftex.def Info: images/vgacomparator.JPG  used on input line 240.
 (pdftex.def)             Requested size: 341.43437pt x 275.51373pt.
-
-[8 <./images/vgadisplayMux.JPG>]
-<images/vgasynchronizer.JPG, id=483, 590.205pt x 319.1925pt>
+ [9 <./images/vgadisplayMux.JPG>]
+<images/vgasynchronizer.JPG, id=518, 590.205pt x 319.1925pt>
 File: images/vgasynchronizer.JPG Graphic file (type jpg)
 <use images/vgasynchronizer.JPG>
-Package pdftex.def Info: images/vgasynchronizer.JPG  used on input line 208.
+Package pdftex.def Info: images/vgasynchronizer.JPG  used on input line 253.
 (pdftex.def)             Requested size: 341.43437pt x 184.65446pt.
-<images/clockDivBy2.JPG, id=484, 854.44218pt x 429.85594pt>
+<images/clockDivBy2.JPG, id=519, 854.44218pt x 429.85594pt>
 File: images/clockDivBy2.JPG Graphic file (type jpg)
 <use images/clockDivBy2.JPG>
-Package pdftex.def Info: images/clockDivBy2.JPG  used on input line 221.
+Package pdftex.def Info: images/clockDivBy2.JPG  used on input line 266.
 (pdftex.def)             Requested size: 341.43437pt x 171.76878pt.
- [9 <./images/vgacomparator.JPG> <./images/vgasynchronizer.JPG>]
-<images/clockdriver.JPG, id=493, 1020.06094pt x 668.4975pt>
+ [10 <./images/vgacomparator.JPG> <./images/vgasynchronizer.JPG>]
+<images/sqwave.JPG, id=527, 889.3225pt x 268.00125pt>
+File: images/sqwave.JPG Graphic file (type jpg)
+<use images/sqwave.JPG>
+Package pdftex.def Info: images/sqwave.JPG  used on input line 287.
+(pdftex.def)             Requested size: 341.43437pt x 102.89249pt.
+ [11 <./images/clockDivBy2.JPG> <./images/sqwave.JPG>]
+<images/clockdriver.JPG, id=541, 1020.06094pt x 668.4975pt>
 File: images/clockdriver.JPG Graphic file (type jpg)
 <use images/clockdriver.JPG>
-Package pdftex.def Info: images/clockdriver.JPG  used on input line 249.
+Package pdftex.def Info: images/clockdriver.JPG  used on input line 303.
 (pdftex.def)             Requested size: 341.43437pt x 223.75679pt.
- [10 <./images/clockDivBy2.JPG>]
-<images/parser.JPG, id=504, 590.95781pt x 266.49562pt>
+<images/parser.JPG, id=542, 590.95781pt x 266.49562pt>
 File: images/parser.JPG Graphic file (type jpg)
 <use images/parser.JPG>
-Package pdftex.def Info: images/parser.JPG  used on input line 261.
+Package pdftex.def Info: images/parser.JPG  used on input line 315.
 (pdftex.def)             Requested size: 341.43437pt x 153.97386pt.
-<images/sevensegdriver.JPG, id=505, 447.92343pt x 227.34938pt>
+ [12 <./images/clockdriver.JPG>]
+<images/sevensegdriver.JPG, id=548, 447.92343pt x 227.34938pt>
 File: images/sevensegdriver.JPG Graphic file (type jpg)
 <use images/sevensegdriver.JPG>
-Package pdftex.def Info: images/sevensegdriver.JPG  used on input line 273.
+Package pdftex.def Info: images/sevensegdriver.JPG  used on input line 327.
 (pdftex.def)             Requested size: 341.43437pt x 173.3042pt.
- [11 <./images/clockdriver.JPG> <./images/parser.JPG>]
-<images/clkdivider.JPG, id=512, 490.83376pt x 267.24844pt>
+<images/clkdivider.JPG, id=549, 490.83376pt x 267.24844pt>
 File: images/clkdivider.JPG Graphic file (type jpg)
 <use images/clkdivider.JPG>
-Package pdftex.def Info: images/clkdivider.JPG  used on input line 285.
+Package pdftex.def Info: images/clkdivider.JPG  used on input line 339.
 (pdftex.def)             Requested size: 341.43437pt x 185.91043pt.
-<images/clkcounter.JPG, id=513, 941.01563pt x 459.21562pt>
+ [13 <./images/parser.JPG> <./images/sevensegdriver.JPG>]
+<images/clkcounter.JPG, id=557, 941.01563pt x 459.21562pt>
 File: images/clkcounter.JPG Graphic file (type jpg)
 <use images/clkcounter.JPG>
-Package pdftex.def Info: images/clkcounter.JPG  used on input line 297.
+Package pdftex.def Info: images/clkcounter.JPG  used on input line 351.
 (pdftex.def)             Requested size: 341.43437pt x 166.6208pt.
- [12 <./images/sevensegdriver.JPG> <./images/clkdivider.JPG>]
-<images/counter.JPG, id=520, 653.44125pt x 485.56406pt>
+<images/counter.JPG, id=558, 653.44125pt x 485.56406pt>
 File: images/counter.JPG Graphic file (type jpg)
 <use images/counter.JPG>
-Package pdftex.def Info: images/counter.JPG  used on input line 310.
+Package pdftex.def Info: images/counter.JPG  used on input line 364.
 (pdftex.def)             Requested size: 341.43437pt x 253.70985pt.
-<images/comp.JPG, id=521, 382.42876pt x 206.27063pt>
+ [14 <./images/clkdivider.JPG> <./images/clkcounter.JPG>]
+<images/comp.JPG, id=565, 382.42876pt x 206.27063pt>
 File: images/comp.JPG Graphic file (type jpg)
 <use images/comp.JPG>
-Package pdftex.def Info: images/comp.JPG  used on input line 322.
+Package pdftex.def Info: images/comp.JPG  used on input line 376.
 (pdftex.def)             Requested size: 341.43437pt x 184.16884pt.
- [13 <./images/clkcounter.JPG> <./images/counter.JPG>]
-<images/sync.JPG, id=529, 398.99063pt x 271.76532pt>
+<images/sync.JPG, id=566, 398.99063pt x 271.76532pt>
 File: images/sync.JPG Graphic file (type jpg)
 <use images/sync.JPG>
-Package pdftex.def Info: images/sync.JPG  used on input line 334.
+Package pdftex.def Info: images/sync.JPG  used on input line 388.
 (pdftex.def)             Requested size: 341.43437pt x 232.57324pt.
-<images/clockset.JPG, id=530, 959.83594pt x 657.2053pt>
+ [15 <./images/counter.JPG> <./images/comp.JPG>]
+<images/clockset.JPG, id=573, 959.83594pt x 657.2053pt>
 File: images/clockset.JPG Graphic file (type jpg)
 <use images/clockset.JPG>
-Package pdftex.def Info: images/clockset.JPG  used on input line 346.
+Package pdftex.def Info: images/clockset.JPG  used on input line 400.
 (pdftex.def)             Requested size: 341.43437pt x 233.78584pt.
- [14 <./images/comp.JPG> <./images/sync.JPG>]
-<images/clkcolumnsel.JPG, id=537, 453.94594pt x 272.51813pt>
+ [16 <./images/sync.JPG> <./images/clockset.JPG>]
+<images/clkcolumnsel.JPG, id=580, 453.94594pt x 272.51813pt>
 File: images/clkcolumnsel.JPG Graphic file (type jpg)
 <use images/clkcolumnsel.JPG>
-Package pdftex.def Info: images/clkcolumnsel.JPG  used on input line 358.
+Package pdftex.def Info: images/clkcolumnsel.JPG  used on input line 412.
 (pdftex.def)             Requested size: 341.43437pt x 204.9744pt.
- [15 <./images/clockset.JPG> <./images/clkcolumnsel.JPG>]
-<images/updowncounter.JPG, id=544, 538.26094pt x 493.0922pt>
+<images/updowncounter.JPG, id=581, 538.26094pt x 493.0922pt>
 File: images/updowncounter.JPG Graphic file (type jpg)
 <use images/updowncounter.JPG>
-Package pdftex.def Info: images/updowncounter.JPG  used on input line 370.
+Package pdftex.def Info: images/updowncounter.JPG  used on input line 424.
 (pdftex.def)             Requested size: 341.43437pt x 312.78653pt.
-<images/hardwareDiagram.jpg, id=545, 990.70125pt x 946.53625pt>
+ [17 <./images/clkcolumnsel.JPG>]
+<images/hardwareDiagram.jpg, id=587, 990.70125pt x 946.53625pt>
 File: images/hardwareDiagram.jpg Graphic file (type jpg)
 <use images/hardwareDiagram.jpg>
-Package pdftex.def Info: images/hardwareDiagram.jpg  used on input line 384.
+Package pdftex.def Info: images/hardwareDiagram.jpg  used on input line 438.
 (pdftex.def)             Requested size: 341.43437pt x 326.20872pt.
- [16 <./images/updowncounter.JPG>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 401.
+ [18 <./images/updowncounter.JPG>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 455.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [17 <./images/hardwareDiagram.jpg>] [18] [19] [20] [21] [22] [23] [24] [25] [
-26] [27] [28] [29]
-[30] [31] [32] [33]
-<images/NESSIM.png, id=623, 616.3025pt x 201.75375pt>
+) [19 <./images/hardwareDiagram.jpg>] [20] [21] [22] [23] [24] [25] [26] [27] [
+28] [29] [30] [31]
+[32] [33] [34] [35]
+<images/NESSIM.png, id=665, 616.3025pt x 201.75375pt>
 File: images/NESSIM.png Graphic file (type png)
 <use images/NESSIM.png>
-Package pdftex.def Info: images/NESSIM.png  used on input line 1438.
+Package pdftex.def Info: images/NESSIM.png  used on input line 1492.
 (pdftex.def)             Requested size: 341.43437pt x 111.77455pt.
-<images/contra.jpg, id=625, 803.0pt x 481.8pt>
+<images/contra.jpg, id=667, 803.0pt x 481.8pt>
 File: images/contra.jpg Graphic file (type jpg)
 <use images/contra.jpg>
-Package pdftex.def Info: images/contra.jpg  used on input line 1446.
+Package pdftex.def Info: images/contra.jpg  used on input line 1500.
 (pdftex.def)             Requested size: 341.43437pt x 204.86153pt.
- [34 <./images/NESSIM.png>]
-<images/NESSIMcontra.png, id=632, 629.85312pt x 196.23312pt>
+ [36 <./images/NESSIM.png>]
+<images/NESSIMcontra.png, id=674, 629.85312pt x 196.23312pt>
 File: images/NESSIMcontra.png Graphic file (type png)
 <use images/NESSIMcontra.png>
-Package pdftex.def Info: images/NESSIMcontra.png  used on input line 1452.
+Package pdftex.def Info: images/NESSIMcontra.png  used on input line 1506.
 (pdftex.def)             Requested size: 341.43437pt x 106.37451pt.
- [35 <./images/contra.jpg> <./images/NESSIMcontra.png>]
-<images/squareSim.png, id=641, 608.77437pt x 173.64874pt>
+ [37 <./images/contra.jpg> <./images/NESSIMcontra.png>]
+<images/squareSim.png, id=684, 608.77437pt x 173.64874pt>
 File: images/squareSim.png Graphic file (type png)
 <use images/squareSim.png>
-Package pdftex.def Info: images/squareSim.png  used on input line 1488.
+Package pdftex.def Info: images/squareSim.png  used on input line 1542.
 (pdftex.def)             Requested size: 341.43437pt x 97.39366pt.
-<images/vgaOutputSim.png, id=642, 647.41875pt x 191.9672pt>
+<images/vgaOutputSim.png, id=685, 647.41875pt x 191.9672pt>
 File: images/vgaOutputSim.png Graphic file (type png)
 <use images/vgaOutputSim.png>
-Package pdftex.def Info: images/vgaOutputSim.png  used on input line 1496.
+Package pdftex.def Info: images/vgaOutputSim.png  used on input line 1550.
 (pdftex.def)             Requested size: 341.43437pt x 101.2383pt.
-<images/vgaHCounterCompSim.png, id=643, 646.66594pt x 100.12407pt>
+<images/vgaHCounterCompSim.png, id=686, 646.66594pt x 100.12407pt>
 File: images/vgaHCounterCompSim.png Graphic file (type png)
 <use images/vgaHCounterCompSim.png>
-Package pdftex.def Info: images/vgaHCounterCompSim.png  used on input line 1525
+Package pdftex.def Info: images/vgaHCounterCompSim.png  used on input line 1579
 .
 (pdftex.def)             Requested size: 341.43437pt x 52.86383pt.
- [36 <./images/squareSim.png> <./images/vgaOutputSim.png>]
-<images/vgaVCounterCompSim.png, id=652, 646.66594pt x 98.61844pt>
+ [38 <./images/squareSim.png> <./images/vgaOutputSim.png>]
+<images/vgaVCounterCompSim.png, id=695, 646.66594pt x 98.61844pt>
 File: images/vgaVCounterCompSim.png Graphic file (type png)
 <use images/vgaVCounterCompSim.png>
-Package pdftex.def Info: images/vgaVCounterCompSim.png  used on input line 1550
+Package pdftex.def Info: images/vgaVCounterCompSim.png  used on input line 1604
 .
 (pdftex.def)             Requested size: 341.43437pt x 52.06888pt.
-<images/vgaCounterSim.png, id=653, 628.59843pt x 57.96657pt>
+<images/vgaCounterSim.png, id=696, 628.59843pt x 57.96657pt>
 File: images/vgaCounterSim.png Graphic file (type png)
 <use images/vgaCounterSim.png>
-Package pdftex.def Info: images/vgaCounterSim.png  used on input line 1575.
+Package pdftex.def Info: images/vgaCounterSim.png  used on input line 1629.
 (pdftex.def)             Requested size: 341.43437pt x 31.48544pt.
- [37 <./images/vgaHCounterCompSim.png> <./images/vgaVCounterCompSim.png> <./ima
+ [39 <./images/vgaHCounterCompSim.png> <./images/vgaVCounterCompSim.png> <./ima
 ges/vgaCounterSim.png>]
-<images/vgaDisplayMuxSim.png, id=665, 581.92406pt x 112.16907pt>
+<images/vgaDisplayMuxSim.png, id=707, 581.92406pt x 112.16907pt>
 File: images/vgaDisplayMuxSim.png Graphic file (type png)
 <use images/vgaDisplayMuxSim.png>
-Package pdftex.def Info: images/vgaDisplayMuxSim.png  used on input line 1596.
+Package pdftex.def Info: images/vgaDisplayMuxSim.png  used on input line 1650.
 (pdftex.def)             Requested size: 341.43437pt x 65.81459pt.
-<images/vgaCompSim.png, id=666, 414.79968pt x 124.21407pt>
+<images/vgaCompSim.png, id=708, 414.79968pt x 124.21407pt>
 File: images/vgaCompSim.png Graphic file (type png)
 <use images/vgaCompSim.png>
-Package pdftex.def Info: images/vgaCompSim.png  used on input line 1625.
+Package pdftex.def Info: images/vgaCompSim.png  used on input line 1679.
 (pdftex.def)             Requested size: 341.43437pt x 102.2485pt.
- [38 <./images/vgaDisplayMuxSim.png> <./images/vgaCompSim.png>]
-<images/vgaSyncSim.png, id=675, 630.10406pt x 60.97781pt>
+ [40 <./images/vgaDisplayMuxSim.png> <./images/vgaCompSim.png>]
+<images/vgaSyncSim.png, id=717, 630.10406pt x 60.97781pt>
 File: images/vgaSyncSim.png Graphic file (type png)
 <use images/vgaSyncSim.png>
-Package pdftex.def Info: images/vgaSyncSim.png  used on input line 1658.
+Package pdftex.def Info: images/vgaSyncSim.png  used on input line 1712.
 (pdftex.def)             Requested size: 341.43437pt x 33.04196pt.
-<images/clockDivBy2Sim.png, id=676, 628.59843pt x 59.47218pt>
+<images/clockDivBy2Sim.png, id=718, 628.59843pt x 59.47218pt>
 File: images/clockDivBy2Sim.png Graphic file (type png)
 <use images/clockDivBy2Sim.png>
-Package pdftex.def Info: images/clockDivBy2Sim.png  used on input line 1679.
+Package pdftex.def Info: images/clockDivBy2Sim.png  used on input line 1733.
 (pdftex.def)             Requested size: 341.43437pt x 32.30324pt.
-<images/clockdriversim1.JPG, id=677, 925.95938pt x 322.20375pt>
+<images/clockdriversim1.JPG, id=719, 925.95938pt x 322.20375pt>
 File: images/clockdriversim1.JPG Graphic file (type jpg)
 <use images/clockdriversim1.JPG>
-Package pdftex.def Info: images/clockdriversim1.JPG  used on input line 1702.
+Package pdftex.def Info: images/clockdriversim1.JPG  used on input line 1756.
 (pdftex.def)             Requested size: 341.43437pt x 118.81036pt.
- [39 <./images/vgaSyncSim.png> <./images/clockDivBy2Sim.png>]
-<images/clockdriversim2.JPG, id=686, 893.58844pt x 341.02406pt>
+ [41 <./images/vgaSyncSim.png> <./images/clockDivBy2Sim.png>]
+<images/clockdriversim2.JPG, id=728, 893.58844pt x 341.02406pt>
 File: images/clockdriversim2.JPG Graphic file (type jpg)
 <use images/clockdriversim2.JPG>
-Package pdftex.def Info: images/clockdriversim2.JPG  used on input line 1709.
+Package pdftex.def Info: images/clockdriversim2.JPG  used on input line 1763.
 (pdftex.def)             Requested size: 341.43437pt x 130.30338pt.
-<images/clockdriversim3.JPG, id=687, 915.42pt x 356.83313pt>
+<images/clockdriversim3.JPG, id=729, 915.42pt x 356.83313pt>
 File: images/clockdriversim3.JPG Graphic file (type jpg)
 <use images/clockdriversim3.JPG>
-Package pdftex.def Info: images/clockdriversim3.JPG  used on input line 1716.
+Package pdftex.def Info: images/clockdriversim3.JPG  used on input line 1770.
 (pdftex.def)             Requested size: 341.43437pt x 133.09337pt.
- [40 <./images/clockdriversim1.JPG> <./images/clockdriversim2.JPG> <./images/cl
-ockdriversim3.JPG>] [41]
-<images/clocksim1.JPG, id=699, 930.47626pt x 201.75375pt>
+ [42 <./images/clockdriversim1.JPG> <./images/clockdriversim2.JPG> <./images/cl
+ockdriversim3.JPG>] [43]
+<images/clocksim1.JPG, id=742, 930.47626pt x 201.75375pt>
 File: images/clocksim1.JPG Graphic file (type jpg)
 <use images/clocksim1.JPG>
-Package pdftex.def Info: images/clocksim1.JPG  used on input line 1823.
+Package pdftex.def Info: images/clocksim1.JPG  used on input line 1877.
 (pdftex.def)             Requested size: 341.43437pt x 74.03201pt.
-<images/clocksim2.JPG, id=700, 937.25156pt x 201.75375pt>
+<images/clocksim2.JPG, id=743, 937.25156pt x 201.75375pt>
 File: images/clocksim2.JPG Graphic file (type jpg)
 <use images/clocksim2.JPG>
-Package pdftex.def Info: images/clocksim2.JPG  used on input line 1829.
+Package pdftex.def Info: images/clocksim2.JPG  used on input line 1883.
 (pdftex.def)             Requested size: 341.43437pt x 73.49942pt.
-<images/clocksim3.JPG, id=701, 937.25156pt x 233.37187pt>
+<images/clocksim3.JPG, id=744, 937.25156pt x 233.37187pt>
 File: images/clocksim3.JPG Graphic file (type jpg)
 <use images/clocksim3.JPG>
-Package pdftex.def Info: images/clocksim3.JPG  used on input line 1835.
+Package pdftex.def Info: images/clocksim3.JPG  used on input line 1889.
 (pdftex.def)             Requested size: 341.43437pt x 85.01799pt.
- [42 <./images/clocksim1.JPG> <./images/clocksim2.JPG>]
-<images/parsersim.JPG, id=708, 764.10469pt x 88.07906pt>
+ [44 <./images/clocksim1.JPG> <./images/clocksim2.JPG>]
+<images/parsersim.JPG, id=751, 764.10469pt x 88.07906pt>
 File: images/parsersim.JPG Graphic file (type jpg)
 <use images/parsersim.JPG>
-Package pdftex.def Info: images/parsersim.JPG  used on input line 1859.
+Package pdftex.def Info: images/parsersim.JPG  used on input line 1913.
 (pdftex.def)             Requested size: 341.43437pt x 39.357pt.
- [43 <./images/clocksim3.JPG> <./images/parsersim.JPG>]
-<images/sevensegmentdriversim.JPG, id=716, 928.21782pt x 146.04562pt>
+ [45 <./images/clocksim3.JPG> <./images/parsersim.JPG>]
+<images/sevensegmentdriversim.JPG, id=758, 928.21782pt x 146.04562pt>
 File: images/sevensegmentdriversim.JPG Graphic file (type jpg)
 <use images/sevensegmentdriversim.JPG>
 Package pdftex.def Info: images/sevensegmentdriversim.JPG  used on input line 1
-903.
+957.
 (pdftex.def)             Requested size: 341.43437pt x 53.7218pt.
-<images/clkdividersim.jpg, id=717, 928.97063pt x 353.06906pt>
+<images/clkdividersim.jpg, id=759, 928.97063pt x 353.06906pt>
 File: images/clkdividersim.jpg Graphic file (type jpg)
 <use images/clkdividersim.jpg>
-Package pdftex.def Info: images/clkdividersim.jpg  used on input line 1936.
+Package pdftex.def Info: images/clkdividersim.jpg  used on input line 1990.
 (pdftex.def)             Requested size: 341.43437pt x 129.76613pt.
- [44 <./images/sevensegmentdriversim.JPG>]
-<images/clkcountersim.jpg, id=723, 929.72343pt x 149.8097pt>
+ [46 <./images/sevensegmentdriversim.JPG>]
+<images/clkcountersim.jpg, id=765, 929.72343pt x 149.8097pt>
 File: images/clkcountersim.jpg Graphic file (type jpg)
 <use images/clkcountersim.jpg>
-Package pdftex.def Info: images/clkcountersim.jpg  used on input line 1955.
+Package pdftex.def Info: images/clkcountersim.jpg  used on input line 2009.
 (pdftex.def)             Requested size: 341.43437pt x 55.01495pt.
-<images/countersim.JPG, id=724, 904.88063pt x 91.84312pt>
+<images/countersim.JPG, id=766, 904.88063pt x 91.84312pt>
 File: images/countersim.JPG Graphic file (type jpg)
 <use images/countersim.JPG>
-Package pdftex.def Info: images/countersim.JPG  used on input line 1976.
+Package pdftex.def Info: images/countersim.JPG  used on input line 2030.
 (pdftex.def)             Requested size: 341.43437pt x 34.65408pt.
- [45 <./images/clkdividersim.jpg> <./images/clkcountersim.jpg> <./images/counte
+ [47 <./images/clkdividersim.jpg> <./images/clkcountersim.jpg> <./images/counte
 rsim.JPG>]
-<images/compsim.JPG, id=732, 792.71156pt x 348.55219pt>
+<images/compsim.JPG, id=774, 792.71156pt x 348.55219pt>
 File: images/compsim.JPG Graphic file (type jpg)
 <use images/compsim.JPG>
-Package pdftex.def Info: images/compsim.JPG  used on input line 1998.
+Package pdftex.def Info: images/compsim.JPG  used on input line 2052.
 (pdftex.def)             Requested size: 341.43437pt x 150.12979pt.
- [46 <./images/compsim.JPG>]
-<images/syncsim.JPG, id=738, 660.96938pt x 350.05782pt>
+ [48 <./images/compsim.JPG>]
+<images/syncsim.JPG, id=780, 660.96938pt x 350.05782pt>
 File: images/syncsim.JPG Graphic file (type jpg)
 <use images/syncsim.JPG>
-Package pdftex.def Info: images/syncsim.JPG  used on input line 2036.
+Package pdftex.def Info: images/syncsim.JPG  used on input line 2090.
 (pdftex.def)             Requested size: 341.43437pt x 180.83461pt.
-<images/clocksetsim.jpg, id=739, 898.85812pt x 268.75406pt>
+<images/clocksetsim.jpg, id=781, 898.85812pt x 268.75406pt>
 File: images/clocksetsim.jpg Graphic file (type jpg)
 <use images/clocksetsim.jpg>
-Package pdftex.def Info: images/clocksetsim.jpg  used on input line 2058.
+Package pdftex.def Info: images/clocksetsim.jpg  used on input line 2112.
 (pdftex.def)             Requested size: 341.43437pt x 102.0866pt.
- [47 <./images/syncsim.JPG> <./images/clocksetsim.jpg>]
-<images/clkcolumnselsim.jpg, id=746, 913.91437pt x 108.405pt>
+ [49 <./images/syncsim.JPG> <./images/clocksetsim.jpg>]
+<images/clkcolumnselsim.jpg, id=789, 913.91437pt x 108.405pt>
 File: images/clkcolumnselsim.jpg Graphic file (type jpg)
 <use images/clkcolumnselsim.jpg>
-Package pdftex.def Info: images/clkcolumnselsim.jpg  used on input line 2107.
+Package pdftex.def Info: images/clkcolumnselsim.jpg  used on input line 2161.
 (pdftex.def)             Requested size: 341.43437pt x 40.49959pt.
- [48 <./images/clkcolumnselsim.jpg>]
-<images/updowncountersim.JPG, id=752, 905.63344pt x 128.73094pt>
+ [50 <./images/clkcolumnselsim.jpg>]
+<images/updowncountersim.JPG, id=795, 905.63344pt x 128.73094pt>
 File: images/updowncountersim.JPG Graphic file (type jpg)
 <use images/updowncountersim.JPG>
-Package pdftex.def Info: images/updowncountersim.JPG  used on input line 2156.
+Package pdftex.def Info: images/updowncountersim.JPG  used on input line 2210.
 (pdftex.def)             Requested size: 341.43437pt x 48.53325pt.
- [49 <./images/updowncountersim.JPG>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2182.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2182.
+ [51 <./images/updowncountersim.JPG>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2236.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2236.
  (DesignProjectLatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2182.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2182.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2236.
 
 Package rerunfilecheck Info: File `DesignProjectLatex.out' has not changed.
-(rerunfilecheck)             Checksum: 7DB8DA0B6D78818CF67C952A50BE1E7E;6158.
+(rerunfilecheck)             Checksum: 6E8D810003A96B7ACB3448841EA08E6B;6464.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2182.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2236.
  ) 
 Here is how much of TeX's memory you used:
- 22021 strings out of 492895
- 398378 string characters out of 3133485
- 538615 words of memory out of 3000000
- 25286 multiletter control sequences out of 15000+200000
+ 22072 strings out of 492895
+ 399434 string characters out of 3133485
+ 538924 words of memory out of 3000000
+ 25319 multiletter control sequences out of 15000+200000
  15505 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,8n,81p,961b,487s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1230,9 +1268,9 @@ Users\Ben\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.
 pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on DesignProjectLatex.pdf (49 pages, 3282180 bytes).
+Output written on DesignProjectLatex.pdf (51 pages, 3401561 bytes).
 PDF statistics:
- 1172 PDF objects out of 1200 (max. 8388607)
- 181 named destinations out of 1000 (max. 500000)
- 980 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1218 PDF objects out of 1440 (max. 8388607)
+ 193 named destinations out of 1000 (max. 500000)
+ 1042 words of extra memory for PDF output out of 10000 (max. 10000000)
 
