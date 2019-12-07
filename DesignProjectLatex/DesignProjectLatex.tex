@@ -515,7 +515,7 @@ module topLevel
 		 output audioOut,
 		 output NESLatchOrange, NESClockRed,
 		 output vgaHsync, vgaVsync,
-		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue
+		 output [3:0] vgaOutRed, vgaOutGreen, vgaOutBlue,
 		 output [6:0] Seg0, Seg1, Seg2, Seg3, Seg4, Seg5);
 		 
 	NesReader NesReader1 (
@@ -561,8 +561,7 @@ module topLevel
 		.Seg2(Seg2),
 		.Seg3(Seg3),
 		.Seg4(Seg4),
-		.Seg5(Seg5),
-		.Seg6(Seg6)
+		.Seg5(Seg5)
 	);
 
 	SquareWave SqTop(
